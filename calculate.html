@@ -15,34 +15,278 @@
     />
     <!-- 引入组件库 -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-    <script type=""></script>
   </head>
 
   <body>
     <div id="app">
-      
+      <div class="main">
+        <div class="title">K-SK 2093.97 计算书</div>
+        <h3>一、 原始参数:</h3>
+        <h4>1、 热介质</h4>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>空气流量:</p>
+              <el-input v-model="form.flow" placeholder=""></el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>进口温度:</p>
+              <el-input
+                v-model="form.temperature"
+                placeholder=""
+                @blur="count_gases"
+              ></el-input>
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>空气进口温度:</p>
+              <el-input v-model="form.entrance" placeholder=""></el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>进口压力:</p>
+              <el-input v-model="form.stress" placeholder=""></el-input>
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>空气出口温度:</p>
+              <el-input v-model="form.exit" placeholder=""></el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>相对湿度:</p>
+              <el-input
+                v-model="form.humidity"
+                placeholder=""
+                @blur="count"
+              ></el-input>
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>空气湿度:</p>
+              <el-input
+                v-model="form.airHumidity"
+                placeholder=""
+                :disabled="true"
+              ></el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>介质平均分子量:</p>
+              <el-input
+                v-model="form.molecule"
+                placeholder=""
+                :disabled="true"
+              ></el-input>
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>空气进口压力:</p>
+              <el-input v-model="form.inletPressure" placeholder=""></el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>气体常数:</p>
+              <el-input
+                v-model="form.gases"
+                placeholder=""
+                :disabled="true"
+              ></el-input>
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>空气允许压降:</p>
+              <el-input
+                v-model="form.depressurization"
+                placeholder=""
+              ></el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>进口密度:</p>
+              <el-input v-model="form.density" placeholder=""></el-input>
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>污垢系数:</p>
+              <el-input v-model="form.dirt" placeholder=""></el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>水蒸汽进口分压力:</p>
+              <el-input
+                v-model="form.vapour"
+                placeholder=""
+                :disabled="true"
+              ></el-input>
+            </div>
+          </el-col>
+        </el-row>
+
+        <h4>2、 冷介质</h4>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>水流量:</p>
+              <el-input v-model="form.water_flow" placeholder=""></el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>水进口温度:</p>
+              <el-input v-model="form.water_temp" placeholder=""></el-input>
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>水工作压力:</p>
+              <el-input v-model="form.water_stress" placeholder=""></el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>水侧允许压降:</p>
+              <el-input v-model="form.water_drop" placeholder=""></el-input>
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>污垢系数:</p>
+              <el-input v-model="form.water_dirt" placeholder=""></el-input>
+            </div>
+          </el-col>
+        </el-row>
+
+        <h4>3、 结构参数</h4>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>管程:</p>
+              <el-input v-model="form.tube_pass" placeholder=""></el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>壳程:</p>
+              <el-input v-model="form.shell_pass" placeholder=""></el-input>
+            </div>
+          </el-col>
+        </el-row>
+      </div>
     </div>
 
     <script>
       //创建 Vue 实例,得到ViewModel
       var vm = new Vue({
-        el: "#app",
+        el: '#app',
         data: {
-          array: [],
-          a: 307.15,
-          b: null
+          form: {
+            // 热介质
+            flow: '', // 空气流量
+            temperature: '', // 进口温度
+            entrance: '', // 空气进口温度
+            stress: '', // 进口压力
+            exit: '', // 空气出口温度
+            humidity: '', // 相对湿度
+            depressurization: '', // 空气允许压降
+            density: 1.293, // 进口密度
+            dirt: '', // 污垢系数
+            vapour: '', // 水蒸汽进口分压力 需查询参数表
+            airHumidity: '', // 空气湿度 需计算
+            molecule: '', // 介质平均分子量 需计算
+            inletPressure: '', // 空气进口压力
+            gases: '', // 气体常数 需计算
+
+            // 冷介质
+            water_flow: '', // 水流量
+            water_temp: '', // 水进口温度
+            water_stress: '', // 水工作压力
+            water_drop: '', // 水侧允许压降
+            water_dirt: '', // 污垢系数
+
+            // 结构参数
+            tube_pass: '冷却水', // 管程
+            shell_pass: '空气' // 壳程
+          },
+          constant: 273.15
         },
         created() {
-          // console.log(water);
-          for (let i = 0; i < water.length; i++) {
-            console.log(water[i], "打印数组");
-            if (water[i][1] == this.a) {
-              this.b = water[i][2];
-              console.log(this.b, "返回值");
-            }
-          }
+          this.array = water;
         },
-        methods: {}
+        methods: {
+          count_gases() {
+            let temperature = this.form.temperature;
+            console.log(temperature);
+            if (temperature) {
+              let gases_num = parseInt(temperature) + this.constant;
+              let type = gases_num.toString();
+              console.log(type, '查询参数');
+              for (let i = 0; i < this.array.length; i++) {
+                // console.log(this.array[i], '数组行');
+                let a = this.array[i].indexOf(type);
+                // console.log(a, '找到了?');
+                if (a >= 0) {
+                  console.log(this.array[i][a + 1]);
+                  this.form.vapour = this.array[i][a + 1];
+                }
+              }
+            }
+          },
+          count() {
+            // 空气湿度计算
+            let vapour = this.form.vapour;
+            let humidity = this.form.humidity;
+            let stress = this.form.stress;
+            let num_a = 622.26 * vapour * humidity;
+            let num_b = Math.pow(stress * 10, 3) - vapour * humidity;
+            let num_c = num_a / num_b;
+            this.form.airHumidity = num_c.toFixed(3);
+            console.log(this.form.airHumidity);
+
+            // 介质平均分子量计算
+            let sun_a =
+              28.959 * (Math.pow(stress * 10, 3) - vapour * humidity) +
+              vapour * humidity * 18.02;
+            let sum_b = Math.pow(stress * 10, 3);
+            let sum_c = sun_a / sum_b;
+            this.form.molecule = sum_c.toFixed(2);
+            console.log(this.form.molecule);
+
+            // 气体常数
+            let num = 8314.3 / sum_c;
+            this.form.gases = num.toFixed(2);
+          }
+        }
       });
     </script>
   </body>

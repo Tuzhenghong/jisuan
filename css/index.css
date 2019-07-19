@@ -2,3 +2,31 @@
   margin: 0;
   padding: 0;
 }
+/* 公共样式 */
+.main {
+  padding: 25px;
+  font-size: 16px;
+}
+.main .title {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+}
+.main h4 {
+  margin-top: 20px;
+}
+.main .grid-content {
+  text-align: left;
+  margin-top: 20px;
+}
+.main .grid-content p {
+  padding: 0 0 10px 7px;
+}
+.main .grid-content .el-input__inner {
+  height: 35px;
+  line-height: 35px;
+}
+.main .grid-content .el-input.is-disabled .el-input__inner {
+  color: #606266;
+  background-color: #fff;
+}
