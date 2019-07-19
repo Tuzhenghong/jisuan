@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="./lib/Vue.min.js"></script>
+    <script type="text/javascript" src="./js/table.js"></script>
+    <link rel="stylesheet" href="./css/index.css" />
+    <!-- 引入样式 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script type=""></script>
+  </head>
+
+  <body>
+    <div id="app">
+      
+    </div>
+
+    <script>
+      //创建 Vue 实例,得到ViewModel
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          array: [],
+          a: 307.15,
+          b: null
+        },
+        created() {
+          // console.log(water);
+          for (let i = 0; i < water.length; i++) {
+            console.log(water[i], "打印数组");
+            if (water[i][1] == this.a) {
+              this.b = water[i][2];
+              console.log(this.b, "返回值");
+            }
+          }
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>
