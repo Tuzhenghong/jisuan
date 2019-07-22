@@ -12,6 +12,9 @@
   font-weight: 600;
   text-align: center;
 }
+.main h3 {
+  margin-top: 20px;
+}
 .main h4 {
   margin-top: 20px;
 }
@@ -21,6 +24,12 @@
 }
 .main .grid-content p {
   padding: 0 0 10px 7px;
+}
+.main .grid-content .el-select {
+  width: 100%;
+}
+.main .grid-content .el-select .el-input__icon {
+  line-height: 35px;
 }
 .main .grid-content .el-input__inner {
   height: 35px;
