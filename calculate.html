@@ -174,7 +174,11 @@
           <el-col :span="12">
             <div class="grid-content">
               <p>水进口温度: (℃)</p>
-              <el-input v-model="form.water_temp" placeholder=""></el-input>
+              <el-input
+                v-model="form.water_temp"
+                placeholder=""
+                @blur="hot_air"
+              ></el-input>
             </div>
           </el-col>
         </el-row>
@@ -243,7 +247,11 @@
           <el-col :span="12">
             <div class="grid-content">
               <p>冷却管壁厚: (mm)</p>
-              <el-input v-model="form.structure_six" placeholder=""></el-input>
+              <el-input
+                v-model="form.structure_six"
+                placeholder=""
+                @blur="valid"
+              ></el-input>
             </div>
           </el-col>
         </el-row>
@@ -427,7 +435,11 @@
           <el-col :span="12">
             <div class="grid-content">
               <p>湿空气中的水析出量: (g/s)</p>
-              <el-input v-model="form.air_measure" placeholder=""></el-input>
+              <el-input
+                v-model="form.air_measure"
+                placeholder=""
+                @focus="measure"
+              ></el-input>
             </div>
           </el-col>
         </el-row>
@@ -438,13 +450,18 @@
               <el-input
                 v-model="form.entrance_enthalpy"
                 placeholder=""
+                @focus="entrances"
               ></el-input>
             </div>
           </el-col>
           <el-col :span="12">
             <div class="grid-content">
               <p>出口温度空气焓值: (kJ/kg)</p>
-              <el-input v-model="form.exit_enthalpy" placeholder=""></el-input>
+              <el-input
+                v-model="form.exit_enthalpy"
+                placeholder=""
+                @focus="enthalpy"
+              ></el-input>
             </div>
           </el-col>
         </el-row>
@@ -452,13 +469,260 @@
           <el-col :span="12">
             <div class="grid-content">
               <p>析湿系数:</p>
-              <el-input v-model="form.coefficient" placeholder=""></el-input>
+              <el-input
+                v-model="form.coefficient"
+                placeholder=""
+                @focus="coefficient"
+              ></el-input>
             </div>
           </el-col>
           <el-col :span="12">
             <div class="grid-content">
               <p>湿空气放出的总热量: (kW)</p>
-              <el-input v-model="form.air_total" placeholder=""></el-input>
+              <el-input
+                v-model="form.air_total"
+                placeholder=""
+                @focus="total"
+              ></el-input>
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>&nbsp;</p>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>&nbsp;</p>
+            </div>
+          </el-col>
+        </el-row>
+
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>水平均温度: (℃)</p>
+              <el-input
+                v-model="form.average"
+                placeholder=""
+                @blur="inquire"
+              ></el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>水温差: (℃)</p>
+              <el-input v-model="form.difference" placeholder=""></el-input>
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>出水温度: (℃)</p>
+              <el-input v-model="form.effluent" placeholder=""></el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>水的密度: (kg/m³)</p>
+              <el-input v-model="form.water_density" placeholder=""></el-input>
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>水的比热: (kJ/(kg.℃))</p>
+              <el-input v-model="form.water_heat" placeholder=""></el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>水的导热系数: (W/(m.s))</p>
+              <el-input
+                v-model="form.water_conduction"
+                placeholder=""
+              ></el-input>
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>水的动力粘度(xE-6): (kg/(m.s))</p>
+              <el-input v-model="form.water_power" placeholder=""></el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>水的普郎特数: (W/(m.s))</p>
+              <el-input v-model="form.water_ludwig" placeholder=""></el-input>
+            </div>
+          </el-col>
+        </el-row>
+
+        <h3>三、 对数平均温差:</h3>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>热空气进口端温差: (℃)</p>
+              <el-input
+                v-model="form.hot_air_entrance"
+                placeholder=""
+              ></el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>热空气出口端温差: (℃)</p>
+              <el-input v-model="form.hot_air_exit" placeholder=""></el-input>
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>P=</p>
+              <el-input v-model="form.p_equal" placeholder=""></el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>R=</p>
+              <el-input v-model="form.r_equal" placeholder=""></el-input>
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>温差校正系数:</p>
+              <el-input
+                v-model="form.revise"
+                placeholder=""
+                @blur="revises"
+              ></el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>∆tm=</p>
+              <el-input v-model="form.tm_equal" placeholder=""></el-input>
+            </div>
+          </el-col>
+        </el-row>
+
+        <h3>四、 工作参数计算:</h3>
+        <el-row :gutter="24">
+          <el-col :span="8">
+            <div class="grid-content">
+              <p>迎风面的有效长度: (mm)</p>
+              <el-input v-model="form.length" placeholder=""></el-input>
+            </div>
+          </el-col>
+          <el-col :span="8">
+            <div class="grid-content">
+              <p>迎风面的有效宽度: (mm)</p>
+              <el-input
+                v-model="form.width"
+                placeholder=""
+                @blur="width_fun"
+              ></el-input>
+            </div>
+          </el-col>
+          <el-col :span="8">
+            <div class="grid-content">
+              <p>冷却管深度: (排)</p>
+              <el-input
+                v-model="form.depth"
+                placeholder=""
+                @blur="depth_fun"
+              ></el-input>
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="24">
+          <el-col :span="8">
+            <div class="grid-content">
+              <p>产品所使用元件为BZ180，翅片管间距为: (mm)</p>
+              <el-input
+                v-model="form.margin"
+                placeholder=""
+                @blur="margin_fun"
+              ></el-input>
+            </div>
+          </el-col>
+          <el-col :span="8">
+            <div class="grid-content">
+              <p>管侧流程为: (mm)</p>
+              <el-input v-model="form.Tube_side" placeholder=""></el-input>
+            </div>
+          </el-col>
+          <el-col :span="8">
+            <div class="grid-content">
+              <p>壳侧流程为:</p>
+              <el-input v-model="form.shell_side" placeholder=""></el-input>
+            </div>
+          </el-col>
+        </el-row>
+
+        <h4>1、 元件特性</h4>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>每平米每排换热面积: (m²/(m².排))</p>
+              <el-input v-model="form.transfer" placeholder=""></el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>迎风面面积: (m²)</p>
+              <el-input v-model="form.windward" placeholder=""></el-input>
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>产品换热面积: (m²)</p>
+              <el-input v-model="form.product" placeholder=""></el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>气侧有效通道截面系数:</p>
+              <el-input v-model="form.aisle" placeholder=""></el-input>
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>气侧有效通道当量直径: (mm)</p>
+              <el-input v-model="form.diameter" placeholder=""></el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>肋化系数:</p>
+              <el-input v-model="form.rib" placeholder=""></el-input>
+            </div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="24">
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>冷却管根数:</p>
+              <el-input v-model="form.cooling" placeholder=""></el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content">
+              <p>水侧有效通道当量直径: (mm)</p>
+              <el-input v-model="form.valid" placeholder=""></el-input>
             </div>
           </el-col>
         </el-row>
@@ -524,7 +788,42 @@
             entrance_enthalpy: '', // 进口温度空气焓值
             exit_enthalpy: '', // 出口温度空气焓值
             coefficient: '', // 析湿系数
-            air_total: '' // 湿空气放出的总热量
+            air_total: '', // 湿空气放出的总热量
+
+            effluent: '', // 出水温度
+            difference: '', // 水温差
+            average: '', // 水平均温度 这两个水平均温度需求暂不明确，先出输入框，等明确需求在调整
+            water_density: '', // 水的密度
+            water_heat: '', // 水的比热
+            water_conduction: '', // 水的导热系数
+            water_power: '', // 水的动力粘度(xE-6)
+            water_ludwig: '', // 水的普郎特数
+
+            // 对数平均温差
+            hot_air_entrance: '', // 热空气进口端温差
+            hot_air_exit: '', // 热空气出口端温差
+            p_equal: '',
+            r_equal: '',
+            revise: '', // 温差校正系数
+            tm_equal: '',
+
+            // 工作参数计算
+            length: '', // 迎风面的有效长度
+            width: '', // 迎风面的有效宽度
+            depth: '', // 冷却管深度
+            margin: '', // 翅片管间距
+            Tube_side: '', // 管侧流程为
+            shell_side: 1, // 壳侧流程为
+
+            // 元件特性
+            transfer: '', // 每平米每排换热面积
+            windward: '', // 迎风面面积
+            product: '', // 产品换热面积
+            aisle: '', // 气侧有效通道截面系数
+            diameter: '', // 气侧有效通道当量直径
+            rib: '', // 肋化系数
+            cooling: '', // 冷却管根数
+            valid: '' // 水侧有效通道当量直径
           },
           constant: 273.15,
           options: [
@@ -551,7 +850,6 @@
               let a = this.array[0][i].indexOf(type);
               console.log(a, '找到了?');
               if (a >= 0) {
-                console.log(this.array[0][i][a + 1]);
                 return this.array[0][i];
               }
             }
@@ -732,11 +1030,11 @@
           },
           airFlow() {
             if (this.form.airHumidity && this.form.air_quality) {
-              this.form.air_flow = (
-                this.form.air_quality *
-                (1 - this.form.airHumidity / 1000)
-              ).toFixed(2);
+              let result =
+                this.form.air_quality * (1 - this.form.airHumidity / 1000);
+              this.form.air_flow = result.toFixed(2);
               console.log(this.form.air_flow);
+              return result;
             } else {
               this.form.air_flow;
             }
@@ -780,10 +1078,9 @@
           },
           probability() {
             if (this.form.airHumidity && this.form.exit_saturation) {
-              this.form.exit_saturation = this.saturation();
-              this.form.airHumidity = this.count();
-              console.log(this.form.exit_saturation);
-              let number = this.form.airHumidity - this.form.exit_saturation;
+              let exit_saturation = this.saturation();
+              let airHumidity = this.count();
+              let number = airHumidity - exit_saturation;
               this.form.air_probability = number.toFixed(6);
             } else {
               this.form.air_probability = '';
@@ -791,9 +1088,267 @@
           },
           start_change() {
             let num_a = this.form.stress * Math.pow(10, 5);
-            let num_b = this.form.gases * (273 + this.form.temperature);
+            let num_b =
+              this.form.gases * (273 + parseInt(this.form.temperature));
             let num_c = num_a / num_b;
-            console.log(num_a, '值', num_b);
+            this.options[1].value = num_c.toFixed(3);
+            this.options[1].label = num_c.toFixed(3);
+            console.log(num_a, '值', num_c);
+          },
+          measure() {
+            if (this.form.air_probability > 0) {
+              this.form.air_measure =
+                this.form.air_flow * this.form.air_probability;
+              console.log(this.form.air_measure);
+            } else {
+              this.form.air_measure = 0;
+            }
+          },
+          entrances() {
+            let i = this.form;
+            if (i.entrance && i.airHumidity) {
+              let sum_c =
+                1.005 * i.entrance +
+                (i.airHumidity / 1000) * (2501 + 1.86 * i.entrance);
+              console.log(sum_c);
+              this.form.entrance_enthalpy = sum_c.toFixed(1);
+              return sum_c;
+            }
+          },
+          enthalpy() {
+            let i = this.form;
+            if (i.exit_saturation && i.exit) {
+              let sum;
+              if (i.air_probability > 0) {
+                sum =
+                  1.005 * i.exit +
+                  (i.exit_saturation / 1000) * (2501 + 1.86 * i.exit);
+                console.log(sum);
+                i.exit_enthalpy = sum.toFixed(5);
+              } else {
+                let airHumidity = this.count();
+                sum =
+                  1.005 * i.exit +
+                  (airHumidity / 1000) * (2501 + 1.86 * i.exit);
+                console.log(sum);
+                i.exit_enthalpy = sum.toFixed(5);
+              }
+              return sum;
+            }
+          },
+          coefficient() {
+            if (
+              this.form.entrance_enthalpy &&
+              this.form.exit_enthalpy &&
+              this.form.entrance &&
+              this.form.exit
+            ) {
+              let result =
+                (this.form.entrance_enthalpy - this.form.exit_enthalpy) /
+                (1.009 * (this.form.entrance - this.form.exit));
+              console.log(result);
+              this.form.coefficient = result.toFixed(2);
+            } else {
+              this.form.coefficient = '';
+            }
+          },
+          total() {
+            if (
+              this.form.air_flow &&
+              this.form.entrance_enthalpy &&
+              this.form.exit_enthalpy
+            ) {
+              let air_flow = this.airFlow();
+              let entrance_enthalpy = this.entrances();
+              let exit_enthalpy = this.enthalpy();
+              let result = air_flow * (entrance_enthalpy - exit_enthalpy);
+              console.log(result);
+              this.form.air_total = result.toFixed(1);
+            }
+          },
+          inquire() {
+            if (this.form.average) {
+              let average = this.form.average;
+              let arr = this.count_gases(average);
+              console.log(arr);
+              this.form.water_density = arr[4]; // 水的密度
+              this.form.water_heat = arr[5]; // 水的比热
+            } else {
+              this.form.water_density = '';
+              this.form.water_heat = '';
+              this.form.water_conduction = '';
+              this.form.water_power = '';
+              this.form.water_ludwig = '';
+            }
+            if (
+              this.form.water_density &&
+              this.form.water_heat &&
+              this.form.air_total &&
+              this.form.water_flow &&
+              this.form.water_temp
+            ) {
+              this.effluents(); // 出水温度
+              this.differences(); // 水温差
+              this.averages(); // 水平均温度
+              this.form.water_conduction =
+                this.conductions(6) * Math.pow(10, -2); // 水的导热系数
+              this.form.water_power = this.conductions(7); // 水的动力粘度(xE-6)
+              this.form.water_ludwig = this.conductions(8); // 水的普郎特数
+              this.hot_air_entrance(); // 热空气进口端温差
+              this.P_equal();
+              this.R_equal();
+            } else {
+              this.form.difference = '';
+              this.form.effluent = '';
+            }
+          },
+          effluents() {
+            let i = this.form;
+            let a = Number(i.water_temp);
+            console.log(a);
+            let result =
+              a +
+              (i.air_total * 3600) /
+                (i.water_flow * i.water_density * i.water_heat);
+            console.log(result);
+            i.effluent = result.toFixed(1);
+            return result;
+          },
+          differences() {
+            let effluent = this.effluents();
+            let result = effluent - this.form.water_temp;
+            console.log(result);
+            this.form.difference = result.toFixed(1);
+            return result;
+          },
+          averages() {
+            let effluent = this.effluents();
+            let result = (effluent + Number(this.form.water_temp)) / 2;
+            console.log(result);
+            this.form.average = result.toFixed(2);
+          },
+          conductions(v) {
+            let average = parseInt(this.form.average);
+            let arr = this.count_gases(average);
+            let result = arr[v];
+            return result;
+            console.log(result);
+          },
+          hot_air_entrance() {
+            let effluent = this.effluents();
+            let result = this.form.entrance - effluent;
+            this.form.hot_air_entrance = result.toFixed(2);
+            console.log(result);
+            return result;
+          },
+          hot_air() {
+            this.hot_air_exit();
+          },
+          hot_air_exit() {
+            if (this.form.exit && this.form.water_temp) {
+              let result = this.form.exit - this.form.water_temp;
+              console.log(result);
+              this.form.hot_air_exit = result.toFixed(1); // 热空气出口端温差s
+              return result;
+            }
+          },
+          P_equal() {
+            let difference = this.differences();
+            let result = difference / (this.form.entrance - this.form.exit);
+            console.log(result);
+            this.form.p_equal = result.toFixed(2);
+          },
+          R_equal() {
+            let difference = this.differences();
+            let result = (this.form.entrance - this.form.exit) / difference;
+            this.form.r_equal = result.toFixed(1);
+          },
+          revises() {
+            let i = this.form;
+            if (i.hot_air_entrance && i.hot_air_exit && i.revise) {
+              hot_air_entrance = this.hot_air_entrance();
+              hot_air_exit = this.hot_air_exit();
+              let result =
+                ((hot_air_entrance - hot_air_exit) /
+                  Math.log(hot_air_entrance / hot_air_exit)) *
+                i.revise;
+              console.log(result);
+              i.tm_equal = result.toFixed(2); // ∆tm
+            }
+          },
+
+          margin_fun() {
+            if (this.form.margin) {
+              var v =
+                ((38.1 * 33 - (3.14159 / 4) * Math.pow(16.5 + 2 * 0.12, 2)) *
+                  2 +
+                  3.14159 * (16.5 + 2 * 0.12) * this.form.margin) /
+                (38.1 * this.form.margin);
+              console.log(v);
+              this.form.transfer = v.toFixed(1); // 每平米每排换热面积
+              if (this.form.windward && this.form.depth) {
+                let windward = this.width_fun();
+                let result = v * windward * this.form.depth;
+                console.log(result);
+                this.form.product = result.toFixed(2); // 产品换热面积
+              }
+              this.aisle(this.form.margin);
+              this.diameter(this.form.margin);
+              this.Rib(
+                this.form.margin,
+                this.form.structure_five,
+                this.form.structure_six
+              );
+            } else {
+              this.form.transfer = '';
+              this.form.product = '';
+              this.form.aisle = '';
+              this.form.diameter = '';
+              this.form.rib = '';
+            }
+          },
+          width_fun() {
+            if (this.form.length && this.form.width) {
+              let sum = (this.form.length * this.form.width) / 1000000;
+              console.log(sum);
+              this.form.windward = sum.toFixed(3); // 迎风面面积
+              return sum;
+            }
+          },
+          aisle(y) {
+            let result = ((38.1 - (16.5 + 2 * 0.12)) * (y - 0.12)) / (38.1 * y);
+            console.log(result);
+            this.form.aisle = result.toFixed(3);
+          },
+          diameter(a) {
+            let result =
+              (4 * (38.1 - (16.5 + 2 * 0.12)) * (a - 0.12)) /
+              (2 * (38.1 - (16.5 + 2 * 0.12) + (a - 0.12)));
+            console.log(result);
+            this.form.diameter = result.toFixed(1);
+          },
+          Rib(b, x, z) {
+            let result =
+              ((38.1 * 33 - (3.14159 / 4) * Math.pow(16.5 + 2 * 0.12, 2)) * 2 +
+                3.14159 * (16.5 + 2 * 0.12) * b) /
+              (3.14159 * (x - 2 * z) * b);
+            this.form.rib = result.toFixed(1);
+          },
+          depth_fun() {
+            if (this.form.width && this.form.depth) {
+              let result =
+                (this.form.width / 38.1) * this.form.depth -
+                parseInt(this.form.depth / 2);
+              this.form.cooling = result;
+            } else {
+              this.form.cooling = '';
+            }
+          },
+          valid() {
+            if (this.form.structure_six) {
+              let result = 16.5 - 2 * this.form.structure_six + 0.09;
+              this.form.valid = result.toFixed(2);
+            }
           }
         }
       });
