@@ -25,6 +25,9 @@
 .main .grid-content p {
   padding: 0 0 10px 7px;
 }
+.main .grid-content span {
+  font-weight: 600;
+}
 .main .grid-content .el-select {
   width: 100%;
 }
