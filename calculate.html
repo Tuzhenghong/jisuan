@@ -35,10 +35,7 @@
               <p>空气湿度: (g/kg (干空气))</p>
               <el-input v-model="form.airHumidity" :disabled="true"></el-input>
               <p>空气进口压力: (Mpa(A))</p>
-              <el-input
-                v-model="form.inletPressure"
-                @blur="inlet_fun"
-              ></el-input>
+              <el-input v-model="form.inletPressure"></el-input>
               <p>空气允许压降: (Kpa)</p>
               <el-input v-model="form.depressurization"></el-input>
               <p>污垢系数: (m2.℃/W)</p>
@@ -225,7 +222,9 @@
           <el-col :span="12">
             <div class="grid-content">
               <p>水平均温度: (℃)</p>
-              <el-input v-model="form.average" @blur="inquire"></el-input>
+              <el-input v-model="form.averageCopy"></el-input>
+              <p>水平均温度: (℃)</p>
+              <el-input v-model="form.average"></el-input>
               <p>出水温度: (℃)</p>
               <el-input v-model="form.effluent" :disabled="true"></el-input>
               <p>水的比热: (kJ/(kg.℃))</p>
@@ -236,6 +235,8 @@
           </el-col>
           <el-col :span="12">
             <div class="grid-content">
+              <p>&nbsp;</p>
+              <el-input class="none"></el-input>
               <p>水温差: (℃)</p>
               <el-input v-model="form.difference" :disabled="true"></el-input>
               <p>水的密度: (kg/m³)</p>
@@ -563,138 +564,151 @@
       </div>
 
       <div id="home" v-show="!showPage">
+        <el-row>
+          <el-col :span="10" style="text-align: right; padding-right: 10px">
+            <el-image
+              style="width: 80px; height: 80px"
+              src="./img/img.jpg"
+            ></el-image>
+          </el-col>
+          <el-col :span="14" style="text-align: left">
+            <h2>湖 北 朗 森 热 工 工 程 有 限 公 司</h2>
+            <h4>Hubei Langsen Thermal Engineering CO. , LTD</h4>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="10" style="text-align: right;">
+            <span>Tel：086</span>
+          </el-col>
+          <el-col :span="12" style="text-align: left">
+            <span>-0714-6382398</span>
+            <span style="margin-left: 60px">Fax：086-0714-6382078</span>
+          </el-col>
+        </el-row>
+        <p style="border: 0;">热 工 性 能 计 算 书</p>
+        <div style="width: 90%; margin: 0 auto">
+          <p style="border-left: 0;">Mechanical and Heat Calculation</p>
           <el-row>
-            <el-col :span="10" style="text-align: right; padding-right: 10px">
-              <el-image style="width: 80px; height: 80px" src="./img/img.jpg"></el-image>
+            <el-col :span="2">
+              <p>序号 NO.</p>
+              <p>1</p>
+              <p>2</p>
+              <p>3</p>
+              <p>4</p>
+              <p>5</p>
+              <p>6</p>
+              <p>7</p>
+              <p>8</p>
+              <p>9</p>
+              <p>10</p>
+              <p>11</p>
+              <p>12</p>
+              <p style="height: 81px;line-height: 81px;">13</p>
+              <p>14</p>
+              <p>15</p>
+              <p>16</p>
+              <p>17</p>
+              <p>18</p>
             </el-col>
-            <el-col :span="14" style="text-align: left">
-              <h2>湖 北 朗 森 热 工 工 程 有 限 公 司</h2>
-              <h4>Hubei Langsen Thermal Engineering CO. , LTD</h4>
+            <el-col :span="9">
+              <p>主 要 参 数 Name</p>
+              <p v-for="(item, index) in tableData">{{ item.name }}</p>
+              <p style="height: 81px;line-height: 81px;">
+                迎风面尺寸：Windward Size
+              </p>
+              <p v-for="(item, index) in tableDataTwo">{{ item.name }}</p>
+            </el-col>
+            <el-col :span="3">
+              <p>符 号 Symbol</p>
+              <p v-for="(item, index) in tableData">{{ item.symbol }}</p>
+              <p style="height: 81px;line-height: 81px;"></p>
+              <p v-for="(item, index) in tableDataTwo">{{ item.symbol }}</p>
+            </el-col>
+            <el-col :span="3">
+              <p>单 位 Unit</p>
+              <p v-for="(item, index) in tableData">{{ item.unit }}</p>
+              <p style="height: 81px;line-height: 81px;">mm</p>
+              <p v-for="(item, index) in tableDataTwo">{{ item.unit }}</p>
+            </el-col>
+            <el-col :span="7" class="rightBorder">
+              <p>数 值 Numeral Value</p>
+              <p>{{ heatRelease }}（冷凝水{{ heatReleaseTwo }}kg/hr）</p>
+              <el-row>
+                <!-- 水 -->
+                <el-col :span="12">
+                  <p>{{ form.structure_one }} Water</p>
+                  <p>{{ form.water_flow }}m3/hr</p>
+                  <p>{{ form.water_density }}</p>
+                  <p>{{ form.water_heat * 1000 }}</p>
+                  <p>{{ form.water_temp }}/{{ form.effluent }}</p>
+                  <p>{{ form.difference }}</p>
+                  <p>{{ form.water_dirt }}</p>
+                </el-col>
+                <!-- 空气 -->
+                <el-col :span="12" class="leftBorder">
+                  <p>{{ form.structure_two }} Air</p>
+                  <p>{{ form.air_quality }}Kg/S</p>
+                  <p>{{ form.air_density }}</p>
+                  <p>{{ form.specific }}</p>
+                  <p>{{ form.entrance }}/{{ form.exit }}</p>
+                  <p>{{ form.entrance - form.exit }}</p>
+                  <p>{{ form.dirt }}</p>
+                </el-col>
+              </el-row>
+              <p>{{ form.tm_equal }}</p>
+              <p>{{ form.none_dirt }}</p>
+              <p>{{ form.compute }}</p>
+              <p>{{ form.product }}</p>
+              <el-row>
+                <!-- 水 -->
+                <el-col :span="12">
+                  <p>长度(L)：{{ form.length }}</p>
+                  <p>深度(D)：{{ form.depth * 29 }}</p>
+                  <p>{{ form.area }}</p>
+                  <p>{{ form.Tube_side }}</p>
+                  <p>{{ form.velocity }}m/s</p>
+                  <p>{{ waterPressureLossOfMedium }}</p>
+                </el-col>
+                <!-- 空气 -->
+                <el-col :span="12" class="leftBorder">
+                  <p>宽度(W)：{{ form.width }}</p>
+                  <p>片距(h)：{{ form.margin }}</p>
+                  <p>{{ form.areaCopy }}</p>
+                  <p>{{ form.shell_side }}</p>
+                  <p>{{ form.velocityCopy }}kg/(m2.s)</p>
+                  <p>{{ airPressureLossOfMedium }}</p>
+                </el-col>
+              </el-row>
+              <p>{{ form.design }}</p>
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="10" style="text-align: right;">
-              <span>Tel：086</s>
+            <el-col :span="2">
+              <p>19</p>
+              <p>20</p>
             </el-col>
-            <el-col :span="12" style="text-align: left">
-              <span>-0714-6382398</span> <span style="margin-left: 60px">Fax：086-0714-6382078</span>
+            <el-col :span="8">
+              <p>冷却器型号 Type of Cooler</p>
+              <p>用户 Consumer</p>
+            </el-col>
+            <el-col :span="14" class="rightBorder">
+              <p>
+                K-SK{{ form.product }}({{ form.structure_three }}管φ{{
+                  form.structure_five
+                }}×{{ form.structure_six }}, LST180{{
+                  form.structure_seven
+                }}翅片)
+              </p>
+              <p></p>
             </el-col>
           </el-row>
-          <p style="border: 0;">热 工 性 能 计 算 书</p>
-          <div style="width: 80%; margin: 0 auto">
-            <p style="border-left: 0;">Mechanical and Heat Calculation</p>
-            <el-row>
-              <el-col :span="2">
-                <p>序号 NO.</p>
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>4</p>
-                <p>5</p>
-                <p>6</p>
-                <p>7</p>
-                <p>8</p>
-                <p>9</p>
-                <p>10</p>
-                <p>11</p>
-                <p>12</p>
-                <p style="height: 81px;line-height: 81px;">13</p>
-                <p>14</p>
-                <p>15</p>
-                <p>16</p>
-                <p>17</p>
-                <p>18</p>
-              </el-col>
-              <el-col :span="9">
-                <p>主 要 参 数 Name</p>
-                <p v-for="(item, index) in tableData">{{item.name}}</p>
-                <p style="height: 81px;line-height: 81px;">迎风面尺寸：Windward Size</p>
-                <p v-for="(item, index) in tableDataTwo">{{item.name}}</p>
-              </el-col>
-              <el-col :span="3">
-                <p>符 号 Symbol</p>
-                <p v-for="(item, index) in tableData">{{item.symbol}}</p>
-                <p style="height: 81px;line-height: 81px;"> </p>
-                <p v-for="(item, index) in tableDataTwo">{{item.symbol}}</p>
-              </el-col>
-              <el-col :span="3">
-                <p>单 位 Unit</p>
-                <p v-for="(item, index) in tableData">{{item.unit}}</p>
-                <p style="height: 81px;line-height: 81px;">mm</p>
-                <p v-for="(item, index) in tableDataTwo">{{item.unit}}</p>
-              </el-col>
-              <el-col :span="7" class="rightBorder">
-                <p>数 值 Numeral Value</p>
-                <p>{{heatRelease}}（冷凝水{{heatReleaseTwo}}kg/hr）</p>
-                <el-row>
-                  <!-- 水 -->
-                  <el-col :span="12">
-                    <p>{{form.structure_one}}Water</p>
-                    <p>{{form.water_flow}}m3/hr</p>
-                    <p>{{form.water_density}}</p>
-                    <p>{{form.water_heat*1000}}</p>
-                    <p>{{form.water_temp}}/{{form.effluent}}</p>
-                    <p>{{form.difference}}</p>
-                    <p>{{form.water_dirt}}</p>
-                  </el-col>
-                  <!-- 空气 -->
-                  <el-col :span="12" class="leftBorder">
-                    <p>{{form.structure_two}}Air</p>
-                    <p>{{form.air_quality}}Kg/S</p>
-                    <p>{{form.air_density}}</p>
-                    <p>{{form.air_specific*1000}}</p>
-                    <p>{{form.entrance}}/{{form.exit}}</p>
-                    <p>{{form.entrance-form.exit}}</p>
-                    <p>{{form.dirt}}</p>
-                  </el-col>
-                </el-row>
-                <p>{{form.tm_equal}}</p>
-                <p>{{form.none_dirt}}</p>
-                <p>{{form.compute}}</p>
-                <p>{{form.product}}</p>
-                <el-row>
-                  <!-- 水 -->
-                  <el-col :span="12">
-                    <p>长度(L)：{{form.length}}</p>
-                    <p>深度(D)：{{form.depth*29}}</p>
-                    <p>{{form.area}}</p>
-                    <p>{{form.Tube_side}}</p>
-                    <p>{{form.velocity}}m/s</p>
-                    <p>{{waterPressureLossOfMedium}}</p>
-                  </el-col>
-                  <!-- 空气 -->
-                  <el-col :span="12" class="leftBorder">
-                    <p>宽度(W)：{{form.width}}</p>
-                    <p>片距(h)：{{form.margin}}</p>
-                    <p>{{form.areaCopy}}</p>
-                    <p>{{form.shell_side}}</p>
-                    <p>{{form.velocityCopy}}kg/(m2.s)</p>
-                    <p>{{airPressureLossOfMedium}}</p>
-                  </el-col>
-                </el-row>
-                <p>{{form.design}}</p>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-col :span="2">
-                <p>19</p>
-                <p>20</p>
-              </el-col>
-              <el-col :span="8">
-                <p>冷却器型号 Type of Cooler</p>
-                <p>用户 Consumer</p>
-              </el-col>
-              <el-col :span="14" class="rightBorder">
-                <p>K-SK{{form.product}}({{form.structure_three}}管φ{{form.structure_five}}×{{form.structure_six}}，LST180{{form.structure_seven}}翅片)
-                </p>
-                <p></p>
-              </el-col>
-            </el-row>
-          </div>
         </div>
-        <div style="text-align: left;">
-            <el-button type="primary" @click="switchPage">{{ showBtnLabel }}</el-button>
-          </div>
+      </div>
+      <div class="button">
+        <el-button type="primary" @click="switchPage">{{
+          showBtnLabel
+        }}</el-button>
+      </div>
     </div>
 
     <script>
@@ -743,6 +757,7 @@
             air_exit: '', // 空气密度(出)
             air_density: '', // 空气密度
             air_specific: '', // 空气比热
+            specific: '', // 结果页比热
             air_conduction: '', // 空气导热系数
             air_power: '', // 空气动力粘度
             air_prandtl: '', // 空气普郎特数
@@ -758,6 +773,7 @@
             coefficient: '', // 析湿系数
             air_total: '', // 湿空气放出的总热量
 
+            averageCopy: '', // 用作计算
             effluent: '', // 出水温度
             difference: '', // 水温差
             average: '', // 水平均温度 这两个水平均温度需求暂不明确，先出输入框，等明确需求在调整
@@ -854,12 +870,12 @@
           constant: 273.15,
           result: true,
           resultTwo: true,
-          showPage: false,//切换页面
-          showBtnLabel: "热工性能计算书",
-          heatRelease: "",//换热器功率
-          heatReleaseTwo:"",
-          waterPressureLossOfMedium:"",
-          airPressureLossOfMedium:"",
+          showPage: false, //切换页面
+          showBtnLabel: '热工性能计算书',
+          heatRelease: '', //换热器功率
+          heatReleaseTwo: '',
+          waterPressureLossOfMedium: '',
+          airPressureLossOfMedium: '',
           options: [
             {
               value: 1.293,
@@ -870,93 +886,95 @@
               label: 0
             }
           ],
-        	tableData: [
-					{
-						name: '换热器功率 Heat Release',
-						symbol: 'Q',
-						unit: "KW",
-					}, {
-						name: '介质种类 Medium Type',
-						symbol: '',
-						unit: "",
-					}, {
-						name: '介质流量 Medium Flow ',
-						symbol: 'G',
-						unit: "",
-					}, {
-						name: '介质密度 Medium Density  ',
-						symbol: 'ρ',
-						unit: "Kg/m3",
-					},
-					{
-						name: '介质比热 Medium Specific Heat ',
-						symbol: 'CP',
-						unit: "J/Kg·℃",
-					},
-					{
-						name: '介质进/出口温度 In/Out Temperature of Medium',
-						symbol: 't1/t2',
-						unit: "℃",
-					},
-					{
-						name: '介质温差 Medium Range of Temperature',
-						symbol: 'Δt',
-						unit: "℃",
-					},
-					{
-						name: '污垢系数 Fouling Factor',
-						symbol: 'rd',
-						unit: "m2·℃/w",
-					},
-					{
-						name: '对数平均温差 Logarithmic Mean Temperature Press',
-						symbol: 'θm',
-						unit: "℃",
-					},
-					{
-						name: '传热系数 Heat Transfer Coefficient',
-						symbol: 'K',
-						unit: "℃W/m2.℃",
-					},
-					{
-						name: '计算所需冷却面积 Calculated Radiating Area',
-						symbol: 'S＇',
-						unit: "m2",
-					},
-					{
-						name: '实际冷却面积(B×L×H) Actual Radiating Area',
-						symbol: 'S',
-						unit: "m2",
-					},
-				],
-				tableDataTwo: [
-					{
-						name: '介质流通截面积  Flow Area of Medium',
-						symbol: 'f',
-						unit: "m2",
-					},
-					{
-						name: '介质流程  Flow Number of Medium',
-						symbol: 'n',
-						unit: "",
-					},
-					{
-						name: '介质流速  Velocity of Medium ',
-						symbol: 'ω',
-						unit: "",
-					},
-					{
-						name: '介质压力损失 Pressure Loss of Medium ',
-						symbol: 'ΔP',
-						unit: "Kpa",
-					},
-					{
-						name: '散热面积储备系数 Reserve Coefficient of Radiating',
-						symbol: 'α',
-						unit: "%",
-					},
-				],
-
+          tableData: [
+            {
+              name: '换热器功率 Heat Release',
+              symbol: 'Q',
+              unit: 'KW'
+            },
+            {
+              name: '介质种类 Medium Type',
+              symbol: '',
+              unit: ''
+            },
+            {
+              name: '介质流量 Medium Flow ',
+              symbol: 'G',
+              unit: ''
+            },
+            {
+              name: '介质密度 Medium Density  ',
+              symbol: 'ρ',
+              unit: 'Kg/m³'
+            },
+            {
+              name: '介质比热 Medium Specific Heat ',
+              symbol: 'C',
+              unit: 'J/Kg·℃'
+            },
+            {
+              name: '介质进/出口温度 In/Out Temperature of Medium',
+              symbol: 't₁/t₂',
+              unit: '℃'
+            },
+            {
+              name: '介质温差 Medium Range of Temperature',
+              symbol: 'Δt',
+              unit: '℃'
+            },
+            {
+              name: '污垢系数 Fouling Factor',
+              symbol: 'rd',
+              unit: 'm²·℃/w'
+            },
+            {
+              name: '对数平均温差 Logarithmic Mean Temperature Press',
+              symbol: 'θm',
+              unit: '℃'
+            },
+            {
+              name: '传热系数 Heat Transfer Coefficient',
+              symbol: 'K',
+              unit: '℃W/m².℃'
+            },
+            {
+              name: '计算所需冷却面积 Calculated Radiating Area',
+              symbol: 'S＇',
+              unit: 'm²'
+            },
+            {
+              name: '实际冷却面积(B×L×H) Actual Radiating Area',
+              symbol: 'S',
+              unit: 'm²'
+            }
+          ],
+          tableDataTwo: [
+            {
+              name: '介质流通截面积  Flow Area of Medium',
+              symbol: 'f',
+              unit: 'm²'
+            },
+            {
+              name: '介质流程  Flow Number of Medium',
+              symbol: 'n',
+              unit: ''
+            },
+            {
+              name: '介质流速  Velocity of Medium ',
+              symbol: 'ω',
+              unit: ''
+            },
+            {
+              name: '介质压力损失 Pressure Loss of Medium ',
+              symbol: 'ΔP',
+              unit: 'Kpa'
+            },
+            {
+              name: '散热面积储备系数 Reserve Coefficient of Radiating',
+              symbol: 'α',
+              unit: '%'
+            }
+          ]
         },
         created() {
           this.array = water;
@@ -975,8 +993,42 @@
               } else {
                 this.resultTwo = false;
               }
-              if (!val.entrance) {
+              if (!val.inletPressure) {
                 val.average_temperature = '';
+                val.air_entrance = '';
+                val.air_density = '';
+                val.air_specific = '';
+                val.air_conduction = '';
+                val.air_power = '';
+                val.air_prandtl = '';
+                val.air_quality = '';
+                val.air_flow = '';
+                val.air_emit = '';
+                val.exit_vapour = '';
+                val.exit_saturation = '';
+                val.air_probability = '';
+                val.air_measure = '';
+                val.entrance_enthalpy = '';
+                val.exit_enthalpy = '';
+                val.coefficient = '';
+                val.air_total = '';
+              } else {
+                this.inlet_fun();
+              }
+              if (!val.averageCopy) {
+                val.water_density = '';
+                val.water_heat = '';
+                val.water_conduction = '';
+                val.water_power = '';
+                val.water_ludwig = '';
+                val.difference = '';
+                val.effluent = '';
+                val.average = '';
+                val.hot_air_entrance = '';
+                val.p_equal = '';
+                val.r_equal = '';
+              } else {
+                this.inquire();
               }
             },
             deep: true,
@@ -1036,6 +1088,10 @@
               let num = 8314.3 / sum_c;
               this.form.gases = num.toFixed(2);
               return num_c;
+            } else {
+              this.form.airHumidity = '';
+              this.form.molecule = '';
+              this.form.airHumidity = '';
             }
           },
           inlet_fun() {
@@ -1084,9 +1140,7 @@
             if (this.form.entrance) {
               let num =
                 (Number(this.form.entrance) + Number(this.form.exit)) / 2;
-              console.log(num);
               this.form.average_temperature = Math.round(num);
-              console.log(this.form.average_temperature, '有值?');
             }
           },
           entrance() {
@@ -1100,9 +1154,7 @@
               let num_b =
                 this.form.gases *
                 (this.constant + parseInt(this.form.entrance));
-              console.log(num_a, '值', num_b);
               let num_c = num_a / num_b;
-              console.log(num_c);
               this.form.air_entrance = num_c.toFixed(3);
               return num_c;
             }
@@ -1113,9 +1165,7 @@
               let num_a = this.form.inletPressure * Math.pow(10, 6);
               let num_b =
                 this.form.gases * (this.constant + parseInt(this.form.exit));
-              console.log(num_a, '值', num_b);
               let num_c = num_a / num_b;
-              console.log(num_c);
               this.form.air_exit = num_c.toFixed(3);
               return num_c;
             } else {
@@ -1133,9 +1183,7 @@
               let num_b =
                 this.form.gases *
                 (this.constant + parseInt(this.form.average_temperature));
-              console.log(num_a, '值', num_b);
               let num_c = num_a / num_b;
-              console.log(num_c);
               this.form.air_density = num_c.toFixed(3);
               return num_c;
             }
@@ -1143,11 +1191,8 @@
           for(value) {
             let gases_num = parseInt(value) + this.constant;
             let type = gases_num.toString();
-            console.log(type, '查询参数');
             for (let i = 0; i < this.array[1].length; i++) {
-              console.log(this.array[1][i], '数组行');
               let a = this.array[1][i].indexOf(type);
-              console.log(a, '找到了?');
               if (a >= 0) {
                 return this.array[1][i];
               }
@@ -1158,8 +1203,8 @@
             let average = this.form.average_temperature;
             if (average) {
               let arr = this.for(average);
-              console.log(arr);
               this.form.air_specific = arr[5];
+              this.form.specific = (this.form.air_specific * 1000).toFixed(0);
             }
           },
           conduction() {
@@ -1168,7 +1213,6 @@
               let v = this.form.average_temperature;
               let arr = this.for(v);
               this.form.air_conduction = Number(arr[6]) * Math.pow(10, -2);
-              console.log(this.form.air_conduction);
               return this.form.air_conduction;
             }
           },
@@ -1191,7 +1235,6 @@
           quality() {
             if (this.form.flow && this.form.standard_density) {
               let result = (this.form.flow / 60) * this.form.standard_density;
-              console.log(this.form.air_quality);
               this.form.air_quality = result.toFixed(2); // 空气质量流量
               return result;
             }
@@ -1218,9 +1261,10 @@
               this.form.entrance &&
               this.form.exit
             ) {
+              const Flow = this.airFlow();
               let i = this.form;
               i.air_emit = (
-                i.air_flow *
+                Flow *
                 i.air_specific *
                 (i.entrance - i.exit)
               ).toFixed(1);
@@ -1277,7 +1321,7 @@
             } else {
               this.form.air_measure = 0;
             }
-            this.heatReleaseTwo = this.form.air_measure*3600/1000
+            this.heatReleaseTwo = (this.form.air_measure * 3600) / 1000;
           },
           entrances() {
             // 进口温度空气焓值
@@ -1342,14 +1386,14 @@
               let result = air_flow * (entrance_enthalpy - exit_enthalpy);
               console.log(result);
               this.form.air_total = result.toFixed(1);
-              this.heatRelease = Math.floor(result)
+              this.heatRelease = Math.floor(result);
               return result;
             }
           },
           inquire() {
-            if (this.form.average) {
-              let average = this.form.average;
-              let arr = this.count_gases(average);
+            if (this.form.averageCopy) {
+              let averageCopy = this.form.averageCopy;
+              let arr = this.count_gases(averageCopy);
               console.log(arr);
               this.form.water_density = arr[4]; // 水的密度
               this.form.water_heat = arr[5]; // 水的比热
@@ -1455,6 +1499,8 @@
               console.log(result);
               i.tm_equal = result.toFixed(2); // ∆tm
               return result;
+            } else {
+              i.tm_equal = ''
             }
           },
 
@@ -1812,7 +1858,7 @@
               const bends_nowel = this.bendsNowel();
               let result = pipe_nowel + bends_nowel;
               this.form.pipes_nowel = result.toFixed(4);
-              this.waterPressureLossOfMedium = (result*1000).toFixed(2)
+              this.waterPressureLossOfMedium = (result * 1000).toFixed(2);
             }
           },
           have_dirt() {
@@ -2149,16 +2195,16 @@
               this.form.twine_total = result.toFixed(2);
             }
           },
-        		//切换页面
-				switchPage() {
-					if (this.showPage == false) {
-						this.showPage = true;
-						this.showBtnLabel = "K-SK2093.97计算书";
-					} else {
-						this.showPage = false;
-						this.showBtnLabel = "热工性能计算书";
-					}
-				},
+          //切换页面
+          switchPage() {
+            if (this.showPage == false) {
+              this.showPage = true;
+              this.showBtnLabel = 'K-SK2093.97计算书';
+            } else {
+              this.showPage = false;
+              this.showBtnLabel = '热工性能计算书';
+            }
+          }
         }
       });
     </script>
