@@ -289,21 +289,21 @@
               <p>迎风面的有效长度: (mm)</p>
               <el-input v-model="form.length"></el-input>
               <p>使用元件为BZ180，翅片管间距为: (mm)</p>
-              <el-input v-model="form.margin" @blur="margin_fun"></el-input>
+              <el-input v-model="form.margin"></el-input>
             </div>
           </el-col>
           <el-col :span="8">
             <div class="grid-content">
               <p>迎风面的有效宽度: (mm)</p>
-              <el-input v-model="form.width" @blur="width_fun"></el-input>
+              <el-input v-model="form.width"></el-input>
               <p>管侧流程为: (mm)</p>
-              <el-input v-model="form.Tube_side" @blur="area"></el-input>
+              <el-input v-model="form.Tube_side"></el-input>
             </div>
           </el-col>
           <el-col :span="8">
             <div class="grid-content">
               <p>冷却管深度: (排)</p>
-              <el-input v-model="form.depth" @blur="depth_fun"></el-input>
+              <el-input v-model="form.depth"></el-input>
               <p>壳侧流程为:</p>
               <el-input v-model="form.shell_side"></el-input>
             </div>
@@ -418,7 +418,7 @@
           <el-col :span="12">
             <div class="grid-content">
               <p>管嘴通径: (mm)</p>
-              <el-input v-model="form.mouth_diameter" @blur="mouth"></el-input>
+              <el-input v-model="form.mouth_diameter"></el-input>
               <p>磨擦系数:</p>
               <el-input
                 v-model="form.mouth_friction"
@@ -463,10 +463,7 @@
           <el-col :span="12">
             <div class="grid-content">
               <p>管嘴通径(进): (mm)</p>
-              <el-input
-                v-model="form.gases_diameter"
-                @blur="qicheng_fun"
-              ></el-input>
+              <el-input v-model="form.gases_diameter"></el-input>
               <p>管嘴流速(进): (m/s)</p>
               <el-input
                 v-model="form.gases_velocity"
@@ -484,10 +481,7 @@
           <el-col :span="12">
             <div class="grid-content">
               <p>管嘴通径(出): (mm)</p>
-              <el-input
-                v-model="form.gases_diameterc"
-                @blur="diameterc_fun"
-              ></el-input>
+              <el-input v-model="form.gases_diameterc"></el-input>
               <p>管嘴流速(出): (m/s)</p>
               <el-input
                 v-model="form.gases_velocityc"
@@ -512,7 +506,7 @@
               <p>空隙率:</p>
               <el-input v-model="form.twine_lacuna"></el-input>
               <p>系数K1:</p>
-              <el-input v-model="form.twine_K1" @blur="twine_fun"></el-input>
+              <el-input v-model="form.twine_K1"></el-input>
               <p>阻力: (KPa)</p>
               <el-input v-model="form.twine_nowel" :disabled="true"></el-input>
               <p>入口流通处通道面积: (m²)</p>
@@ -534,10 +528,7 @@
               <p>操作气速: (m/s)</p>
               <el-input v-model="form.twine_handle" :disabled="true"></el-input>
               <p>H(入口处最短距离): (mm)</p>
-              <el-input
-                v-model="form.twine_distance"
-                @blur="distance"
-              ></el-input>
+              <el-input v-model="form.twine_distance"></el-input>
               <p>入口流通处流速: (m/s)</p>
               <el-input v-model="form.twine_flow" :disabled="true"></el-input>
               <p>出口流通处通道面积: (m²)</p>
@@ -1030,6 +1021,86 @@
               } else {
                 this.inquire();
               }
+              if (!val.margin) {
+                val.transfer = '';
+                val.product = '';
+                val.aisle = '';
+                val.diameter = '';
+                val.rib = '';
+                val.areaCopy = '';
+                val.velocityCopy = '';
+                val.wire = '';
+                val.gas_Reynolds = '';
+                val.gas_heat = '';
+              } else {
+                this.margin_fun();
+              }
+              if (!val.width) {
+                val.windward = '';
+              } else {
+                this.width_fun();
+              }
+              if (!val.Tube_side) {
+                val.area = '';
+                val.velocity = '';
+                val.Reynolds = '';
+                val.factor = '';
+                val.mouth_friction = '';
+                val.bend_nowel = '';
+                val.mouth_nowel = '';
+                val.bends_nowel = '';
+                val.pipes_nowel = '';
+                val.have_dirt = '';
+                val.none_dirt = '';
+                val.compute = '';
+                val.design = '';
+                val.gases_control = '';
+              } else {
+                this.area();
+              }
+              if (!val.depth) {
+                val.cooling = '';
+                val.area = '';
+              } else {
+                this.depth_fun();
+              }
+              if (!val.mouth_diameter) {
+                val.mouth_velocity = '';
+                val.pipe_nowel = '';
+                val.pipes_nowel = '';
+              } else {
+                this.mouth();
+              }
+              if (!val.gases_diameter) {
+                val.gases_velocity = '';
+                val.gases_nowel = '';
+              } else {
+                this.qicheng_fun();
+              }
+              if (!val.gases_diameterc) {
+                val.gases_velocityc = '';
+                val.gases_nowelc = '';
+                val.gases_controlc = '';
+              } else {
+                this.diameterc_fun();
+              }
+              if (!val.twine_K1) {
+                val.twine_handle = '';
+                val.twine_nowel = '';
+              } else {
+                this.twine_fun();
+              }
+              if (!val.twine_distance) {
+                val.twine_area = '';
+                val.twine_flow = '';
+                val.twine_stress = '';
+                val.twine_export = '';
+                val.twine_rate = '';
+                val.twine_pressure = '';
+                val.twine_total = '';
+              } else {
+                this.distance();
+              }
             },
             deep: true,
             immediate: true
@@ -1500,7 +1571,7 @@
               i.tm_equal = result.toFixed(2); // ∆tm
               return result;
             } else {
-              i.tm_equal = ''
+              i.tm_equal = '';
             }
           },
 
