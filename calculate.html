@@ -46,14 +46,11 @@
           <el-col :span="12">
             <div class="grid-content">
               <p>进口温度: (℃)</p>
-              <el-input
-                v-model="form.temperature"
-                @blur="countGases"
-              ></el-input>
+              <el-input v-model="form.temperature"></el-input>
               <p>进口压力: (bar)</p>
               <el-input v-model="form.stress"></el-input>
               <p>相对湿度:</p>
-              <el-input v-model="form.humidity" @blur="count"></el-input>
+              <el-input v-model="form.humidity"></el-input>
               <p>介质平均分子量: (Kg/Kmol)</p>
               <el-input v-model="form.molecule" :disabled="true"></el-input>
               <p>气体常数: (J/(kg·k))</p>
@@ -969,11 +966,14 @@
         },
         created() {
           this.array = water;
+          const Array_new = Object.entries(this.form);
+          console.log(Array_new);
         },
         watch: {
           form: {
             handler(val) {
-              console.log('b.c: ' + val.c); //但是这两个值打印出来却都是一样的
+              console.log(val);
+              
               if (val.pipes_nowel < val.water_drop) {
                 this.result = true;
               } else {
@@ -984,6 +984,12 @@
               } else {
                 this.resultTwo = false;
               }
+              if (!val.temperature) {
+                val.vapour = '';
+              } else {
+                this.countGases();
+              }
+
               if (!val.inletPressure) {
                 val.average_temperature = '';
                 val.air_entrance = '';
@@ -1006,6 +1012,7 @@
               } else {
                 this.inlet_fun();
               }
+
               if (!val.averageCopy) {
                 val.water_density = '';
                 val.water_heat = '';
@@ -1162,7 +1169,7 @@
             } else {
               this.form.airHumidity = '';
               this.form.molecule = '';
-              this.form.airHumidity = '';
+              this.form.gases = '';
             }
           },
           inlet_fun() {
