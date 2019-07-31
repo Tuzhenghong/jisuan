@@ -27,30 +27,57 @@
           <el-col :span="12">
             <div class="grid-content">
               <p>空气流量: (m³/min)</p>
-              <el-input v-model="form.flow"></el-input>
+              <el-input
+                v-model="form.flow"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>空气进口温度: (℃)</p>
-              <el-input v-model="form.entrance"></el-input>
+              <el-input
+                v-model="form.entrance"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>空气出口温度: (℃)</p>
-              <el-input v-model="form.exit"></el-input>
+              <el-input
+                v-model="form.exit"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>空气湿度: (g/kg (干空气))</p>
               <el-input v-model="form.airHumidity" :disabled="true"></el-input>
               <p>空气进口压力: (Mpa(A))</p>
-              <el-input v-model="form.inletPressure"></el-input>
+              <el-input
+                v-model="form.inletPressure"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>空气允许压降: (Kpa)</p>
-              <el-input v-model="form.depressurization"></el-input>
+              <el-input
+                v-model="form.depressurization"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>污垢系数: (m2.℃/W)</p>
-              <el-input v-model="form.dirt"></el-input>
+              <el-input
+                v-model="form.dirt"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
             </div>
           </el-col>
 
           <el-col :span="12">
             <div class="grid-content">
               <p>进口温度: (℃)</p>
-              <el-input v-model="form.temperature"></el-input>
+              <el-input
+                v-model="form.temperature"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>进口压力: (bar)</p>
-              <el-input v-model="form.stress"></el-input>
+              <el-input
+                v-model="form.stress"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>相对湿度:</p>
-              <el-input v-model="form.humidity"></el-input>
+              <el-input
+                v-model="form.humidity"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>介质平均分子量: (Kg/Kmol)</p>
               <el-input v-model="form.molecule" :disabled="true"></el-input>
               <p>气体常数: (J/(kg·k))</p>
@@ -80,19 +107,35 @@
           <el-col :span="12">
             <div class="grid-content">
               <p>水流量: (m³/h)</p>
-              <el-input v-model="form.water_flow"></el-input>
+              <el-input
+                v-model="form.water_flow"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>水工作压力: (MPa(A))</p>
-              <el-input v-model="form.water_stress"></el-input>
+              <el-input
+                v-model="form.water_stress"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>污垢系数: (m2.℃/W)</p>
-              <el-input v-model="form.water_dirt"></el-input>
+              <el-input
+                v-model="form.water_dirt"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
             </div>
           </el-col>
           <el-col :span="12">
             <div class="grid-content">
               <p>水进口温度: (℃)</p>
-              <el-input v-model="form.water_temp" @blur="hot_air"></el-input>
+              <el-input
+                v-model="form.water_temp"
+                @blur="hot_air"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>水侧允许压降: (Mpa)</p>
-              <el-input v-model="form.water_drop"></el-input>
+              <el-input
+                v-model="form.water_drop"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
             </div>
           </el-col>
         </el-row>
@@ -109,7 +152,10 @@
               <p>冷却管材料: (M)</p>
               <el-input v-model="form.structure_three"></el-input>
               <p>冷却管外径: (mm)</p>
-              <el-input v-model="form.structure_five"></el-input>
+              <el-input
+                v-model="form.structure_five"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>翅片材料:</p>
               <el-input v-model="form.structure_seven"></el-input>
             </div>
@@ -122,11 +168,21 @@
                 :disabled="true"
               ></el-input>
               <p>冷却管导热系数: (w/m·k)</p>
-              <el-input v-model="form.structure_four"></el-input>
+              <el-input
+                v-model="form.structure_four"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>冷却管壁厚: (mm)</p>
-              <el-input v-model="form.structure_six" @blur="valid"></el-input>
+              <el-input
+                v-model="form.structure_six"
+                @blur="valid"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>翅片效率:</p>
-              <el-input v-model="form.structure_eight"></el-input>
+              <el-input
+                v-model="form.structure_eight"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
             </div>
           </el-col>
         </el-row>
@@ -219,9 +275,16 @@
           <el-col :span="12">
             <div class="grid-content">
               <p>水平均温度: (℃)</p>
-              <el-input v-model="form.averageCopy"></el-input>
+              <el-input
+                v-model="form.averageCopy"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>水平均温度: (℃)</p>
-              <el-input v-model="form.average"></el-input>
+              <el-input
+                v-model="form.average"
+                :disabled="true"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>出水温度: (℃)</p>
               <el-input v-model="form.effluent" :disabled="true"></el-input>
               <p>水的比热: (kJ/(kg.℃))</p>
@@ -264,7 +327,10 @@
               <p>P=</p>
               <el-input v-model="form.p_equal" :disabled="true"></el-input>
               <p>温差校正系数:</p>
-              <el-input v-model="form.revise" @blur="revises"></el-input>
+              <el-input
+                v-model="form.revise"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
             </div>
           </el-col>
           <el-col :span="12">
@@ -284,25 +350,44 @@
           <el-col :span="8">
             <div class="grid-content">
               <p>迎风面的有效长度: (mm)</p>
-              <el-input v-model="form.length"></el-input>
+              <el-input
+                v-model="form.length"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>使用元件为BZ180，翅片管间距为: (mm)</p>
-              <el-input v-model="form.margin"></el-input>
+              <el-input
+                v-model="form.margin"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
             </div>
           </el-col>
           <el-col :span="8">
             <div class="grid-content">
               <p>迎风面的有效宽度: (mm)</p>
-              <el-input v-model="form.width"></el-input>
+              <el-input
+                v-model="form.width"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>管侧流程为: (mm)</p>
-              <el-input v-model="form.Tube_side"></el-input>
+              <el-input
+                v-model="form.Tube_side"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
             </div>
           </el-col>
           <el-col :span="8">
             <div class="grid-content">
               <p>冷却管深度: (排)</p>
-              <el-input v-model="form.depth"></el-input>
+              <el-input
+                v-model="form.depth"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>壳侧流程为:</p>
-              <el-input v-model="form.shell_side"></el-input>
+              <el-input
+                v-model="form.shell_side"
+                :disabled="true"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
             </div>
           </el-col>
         </el-row>
@@ -415,7 +500,10 @@
           <el-col :span="12">
             <div class="grid-content">
               <p>管嘴通径: (mm)</p>
-              <el-input v-model="form.mouth_diameter"></el-input>
+              <el-input
+                v-model="form.mouth_diameter"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>磨擦系数:</p>
               <el-input
                 v-model="form.mouth_friction"
@@ -460,7 +548,10 @@
           <el-col :span="12">
             <div class="grid-content">
               <p>管嘴通径(进): (mm)</p>
-              <el-input v-model="form.gases_diameter"></el-input>
+              <el-input
+                v-model="form.gases_diameter"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>管嘴流速(进): (m/s)</p>
               <el-input
                 v-model="form.gases_velocity"
@@ -478,7 +569,10 @@
           <el-col :span="12">
             <div class="grid-content">
               <p>管嘴通径(出): (mm)</p>
-              <el-input v-model="form.gases_diameterc"></el-input>
+              <el-input
+                v-model="form.gases_diameterc"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>管嘴流速(出): (m/s)</p>
               <el-input
                 v-model="form.gases_velocityc"
@@ -499,11 +593,20 @@
           <el-col :span="12">
             <div class="grid-content">
               <p>网丝直径: (mm)</p>
-              <el-input v-model="form.twine_diameter"></el-input>
+              <el-input
+                v-model="form.twine_diameter"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>空隙率:</p>
-              <el-input v-model="form.twine_lacuna"></el-input>
+              <el-input
+                v-model="form.twine_lacuna"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>系数K1:</p>
-              <el-input v-model="form.twine_K1"></el-input>
+              <el-input
+                v-model="form.twine_K1"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>阻力: (KPa)</p>
               <el-input v-model="form.twine_nowel" :disabled="true"></el-input>
               <p>入口流通处通道面积: (m²)</p>
@@ -519,13 +622,22 @@
           <el-col :span="12">
             <div class="grid-content">
               <p>网层厚度: (mm)</p>
-              <el-input v-model="form.twine_thickness"></el-input>
+              <el-input
+                v-model="form.twine_thickness"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>磨擦系数:</p>
-              <el-input v-model="form.twine_rub"></el-input>
+              <el-input
+                v-model="form.twine_rub"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>操作气速: (m/s)</p>
               <el-input v-model="form.twine_handle" :disabled="true"></el-input>
               <p>H(入口处最短距离): (mm)</p>
-              <el-input v-model="form.twine_distance"></el-input>
+              <el-input
+                v-model="form.twine_distance"
+                oninput="value=value.replace(/[^\d.]/g,'')"
+              ></el-input>
               <p>入口流通处流速: (m/s)</p>
               <el-input v-model="form.twine_flow" :disabled="true"></el-input>
               <p>出口流通处通道面积: (m²)</p>
@@ -559,7 +671,7 @@
               src="./img/img.jpg"
             ></el-image>
           </el-col>
-          <el-col :span="14" style="text-align: left">
+          <el-col :span="14" class="langsen">
             <h2>湖 北 朗 森 热 工 工 程 有 限 公 司</h2>
             <h4>Hubei Langsen Thermal Engineering CO. , LTD</h4>
           </el-col>
@@ -574,9 +686,13 @@
           </el-col>
         </el-row>
         <p style="border: 0;">热 工 性 能 计 算 书</p>
+        <p class="Calculation">Mechanical and Heat Calculation</p>
+        <div class="fl">
+          <span>LS NO.</span>
+          <span class="fr">Rev.0</span>
+        </div>
         <div style="width: 90%; margin: 0 auto">
-          <p style="border-left: 0;">Mechanical and Heat Calculation</p>
-          <el-row>
+          <el-row class="border">
             <el-col :span="2">
               <p>序号 NO.</p>
               <p>1</p>
@@ -704,6 +820,7 @@
       var vm = new Vue({
         el: '#app',
         data: {
+          a: '',
           form: {
             // 热介质
             flow: '', // 空气流量
@@ -897,7 +1014,7 @@
             },
             {
               name: '介质比热 Medium Specific Heat ',
-              symbol: 'C',
+              symbol: 'Cp',
               unit: 'J/Kg·℃'
             },
             {
@@ -966,14 +1083,10 @@
         },
         created() {
           this.array = water;
-          const Array_new = Object.entries(this.form);
-          console.log(Array_new);
         },
         watch: {
           form: {
             handler(val) {
-              console.log(val);
-              
               if (val.pipes_nowel < val.water_drop) {
                 this.result = true;
               } else {
@@ -1012,7 +1125,11 @@
               } else {
                 this.inlet_fun();
               }
-
+              if (!val.revise) {
+                val.tm_equal = '';
+              } else {
+                this.revises();
+              }
               if (!val.averageCopy) {
                 val.water_density = '';
                 val.water_heat = '';
@@ -1114,19 +1231,25 @@
           }
         },
         methods: {
-          count_gases(index) {
-            let gases_num = parseInt(index) + this.constant;
-            let type = gases_num.toString();
-            console.log(type, '查询参数');
-            for (let i = 0; i < this.array[0].length; i++) {
-              // console.log(this.array[0], '数组行');
-              let a = this.array[0][i].indexOf(type);
-              console.log(a, '找到了?');
-              if (a >= 0) {
-                return this.array[0][i];
-              }
+          isNaN(x) {
+            if (!isNaN(Number(x))) {
+              return true;
+            } else {
+              return false;
             }
-            return [];
+          },
+          count_gases(index) {
+            if (index) {
+              let gases_num = Number(index) + this.constant;
+              let type = gases_num.toString();
+              for (let i = 0; i < this.array[0].length; i++) {
+                let a = this.array[0][i].indexOf(type);
+                if (a >= 0) {
+                  return this.array[0][i];
+                }
+              }
+              return [];
+            }
           },
           countGases() {
             let temperature = this.form.temperature;
@@ -1147,11 +1270,10 @@
               let vapour = this.form.vapour;
               let humidity = this.form.humidity;
               let stress = this.form.stress;
-              let num_a = 622.26 * vapour * humidity;
-              let num_b = Math.pow(stress * 10, 3) - vapour * humidity;
-              let num_c = num_a / num_b;
+              let num_c =
+                (622.26 * vapour * humidity) /
+                (Math.pow(stress * 10, 3) - vapour * humidity);
               this.form.airHumidity = num_c.toFixed(3);
-              console.log(this.form.airHumidity);
 
               // 介质平均分子量计算
               let sun_a =
@@ -1159,18 +1281,22 @@
                 vapour * humidity * 18.02;
               let sum_b = Math.pow(stress * 10, 3);
               let sum_c = sun_a / sum_b;
+              this.a = sum_c;
               this.form.molecule = sum_c.toFixed(2);
-              console.log(this.form.molecule);
 
-              // 气体常数
-              let num = 8314.3 / sum_c;
-              this.form.gases = num.toFixed(2);
+              this.gases();
               return num_c;
             } else {
               this.form.airHumidity = '';
               this.form.molecule = '';
               this.form.gases = '';
             }
+          },
+          gases() {
+            // 气体常数
+            let num = 8314.3 / this.a;
+            this.form.gases = num.toFixed(2);
+            return num;
           },
           inlet_fun() {
             if (this.form.exit) {
@@ -1212,13 +1338,14 @@
               this.form.air_total = '';
             }
           },
-
           temperature() {
             // 空气平均温度
             if (this.form.entrance) {
               let num =
                 (Number(this.form.entrance) + Number(this.form.exit)) / 2;
-              this.form.average_temperature = Math.round(num);
+              if (!isNaN(Number(num))) {
+                this.form.average_temperature = num;
+              }
             }
           },
           entrance() {
@@ -1228,23 +1355,32 @@
               this.form.gases &&
               this.form.entrance
             ) {
+              let gases = this.gases();
               let num_a = this.form.inletPressure * Math.pow(10, 6);
               let num_b =
-                this.form.gases *
-                (this.constant + parseInt(this.form.entrance));
+                gases * (this.constant + parseInt(this.form.entrance));
               let num_c = num_a / num_b;
-              this.form.air_entrance = num_c.toFixed(3);
+              if (this.isNaN(num_c)) {
+                this.form.air_entrance = num_c.toFixed(3);
+              } else {
+                this.form.air_entrance = '';
+              }
               return num_c;
             }
           },
           exit() {
             // 空气密度(出)
             if (this.form.inletPressure && this.form.gases && this.form.exit) {
+              let gases = this.gases();
               let num_a = this.form.inletPressure * Math.pow(10, 6);
-              let num_b =
-                this.form.gases * (this.constant + parseInt(this.form.exit));
+              let num_b = gases * (this.constant + parseInt(this.form.exit));
               let num_c = num_a / num_b;
-              this.form.air_exit = num_c.toFixed(3);
+              if (this.isNaN(num_c)) {
+                this.form.air_exit = num_c.toFixed(3);
+              } else {
+                this.form.air_exit = '';
+              }
+
               return num_c;
             } else {
               this.form.air_exit = '';
@@ -1257,28 +1393,35 @@
               this.form.gases &&
               this.form.average_temperature
             ) {
+              let gases = this.gases();
               let num_a = this.form.inletPressure * Math.pow(10, 6);
               let num_b =
-                this.form.gases *
-                (this.constant + parseInt(this.form.average_temperature));
+                gases *
+                (this.constant + Math.round(this.form.average_temperature));
               let num_c = num_a / num_b;
-              this.form.air_density = num_c.toFixed(3);
+              if (this.isNaN(num_c)) {
+                this.form.air_density = num_c.toFixed(3);
+              } else {
+                this.form.air_density = '';
+              }
               return num_c;
             }
           },
           for(value) {
-            let gases_num = parseInt(value) + this.constant;
-            let type = gases_num.toString();
-            for (let i = 0; i < this.array[1].length; i++) {
-              let a = this.array[1][i].indexOf(type);
-              if (a >= 0) {
-                return this.array[1][i];
+            if (value) {
+              let gases_num = Number(value) + this.constant;
+              let type = gases_num.toString();
+              for (let i = 0; i < this.array[1].length; i++) {
+                let a = this.array[1][i].indexOf(type);
+                if (a >= 0) {
+                  return this.array[1][i];
+                }
               }
             }
           },
           specific() {
             // 空气比热
-            let average = this.form.average_temperature;
+            let average = Math.round(this.form.average_temperature);
             if (average) {
               let arr = this.for(average);
               this.form.air_specific = arr[5];
@@ -1288,7 +1431,7 @@
           conduction() {
             // 空气导热系数
             if (this.form.average_temperature) {
-              let v = this.form.average_temperature;
+              let v = Math.round(this.form.average_temperature);
               let arr = this.for(v);
               this.form.air_conduction = Number(arr[6]) * Math.pow(10, -2);
               return this.form.air_conduction;
@@ -1297,7 +1440,7 @@
           power() {
             // 空气动力粘度
             if (this.form.average_temperature) {
-              let v = this.form.average_temperature;
+              let v = Math.round(this.form.average_temperature);
               let arr = this.for(v);
               this.form.air_power = arr[7];
             }
@@ -1305,15 +1448,21 @@
           prandtl() {
             // 空气普郎特数
             if (this.form.average_temperature) {
-              let v = this.form.average_temperature;
+              let v = Math.round(this.form.average_temperature);
               let arr = this.for(v);
               this.form.air_prandtl = arr[8];
             }
           },
           quality() {
+            // 空气质量流量
             if (this.form.flow && this.form.standard_density) {
               let result = (this.form.flow / 60) * this.form.standard_density;
-              this.form.air_quality = result.toFixed(2); // 空气质量流量
+              if (this.isNaN(result)) {
+                this.form.air_quality = result.toFixed(2);
+              } else {
+                this.form.air_quality = '';
+              }
+
               return result;
             }
           },
@@ -1326,8 +1475,12 @@
             if (this.form.airHumidity && this.form.air_quality) {
               let result =
                 this.form.air_quality * (1 - this.form.airHumidity / 1000);
-              this.form.air_flow = result.toFixed(2);
-              console.log(this.form.air_flow);
+              if (this.isNaN(result)) {
+                this.form.air_flow = result.toFixed(2);
+              } else {
+                this.form.air_flow = '';
+              }
+
               return result;
             }
           },
@@ -1341,12 +1494,12 @@
             ) {
               const Flow = this.airFlow();
               let i = this.form;
-              i.air_emit = (
-                Flow *
-                i.air_specific *
-                (i.entrance - i.exit)
-              ).toFixed(1);
-              console.log(i.air_emit);
+              let result = Flow * i.air_specific * (i.entrance - i.exit);
+              if (this.isNaN(result)) {
+                i.air_emit = result.toFixed(1);
+              } else {
+                i.air_emit = '';
+              }
             }
           },
           exitVapour() {
@@ -1364,7 +1517,12 @@
               let num_c =
                 (622.26 * i.exit_vapour) /
                 (i.inletPressure * 10 - i.exit_vapour);
-              this.form.exit_saturation = num_c.toFixed(5);
+              if (this.isNaN(num_c)) {
+                this.form.exit_saturation = num_c.toFixed(5);
+              } else {
+                this.form.exit_saturation = '';
+              }
+
               return num_c;
             }
           },
@@ -1374,7 +1532,13 @@
               let exit_saturation = this.saturation();
               let airHumidity = this.count();
               let number = airHumidity - exit_saturation;
-              this.form.air_probability = number.toFixed(6);
+
+              if (this.isNaN(number)) {
+                this.form.air_probability = number.toFixed(6);
+              } else {
+                this.form.air_probability = '';
+              }
+
               this.measure();
             }
           },
@@ -1387,7 +1551,6 @@
               let num_c = num_a / num_b;
               this.options[1].value = num_c.toFixed(3);
               this.options[1].label = num_c.toFixed(3);
-              console.log(num_a, '值', num_c);
             }
           },
           measure() {
@@ -1395,7 +1558,6 @@
             if (this.form.air_probability > 0) {
               this.form.air_measure =
                 this.form.air_flow * this.form.air_probability;
-              console.log(this.form.air_measure);
             } else {
               this.form.air_measure = 0;
             }
@@ -1405,11 +1567,15 @@
             // 进口温度空气焓值
             let i = this.form;
             if (i.entrance && i.airHumidity) {
+              let airHumidity = this.count();
               let sum_c =
                 1.005 * i.entrance +
-                (i.airHumidity / 1000) * (2501 + 1.86 * i.entrance);
-              console.log(sum_c);
-              this.form.entrance_enthalpy = sum_c.toFixed(1);
+                (airHumidity / 1000) * (2501 + 1.86 * i.entrance);
+              if (this.isNaN(sum_c)) {
+                this.form.entrance_enthalpy = sum_c.toFixed(1);
+              } else {
+                this.form.entrance_enthalpy = '';
+              }
               return sum_c;
             }
           },
@@ -1422,15 +1588,21 @@
                 sum =
                   1.005 * i.exit +
                   (i.exit_saturation / 1000) * (2501 + 1.86 * i.exit);
-                console.log(sum);
-                i.exit_enthalpy = sum.toFixed(5);
+                if (this.isNaN(sum)) {
+                  i.exit_enthalpy = sum.toFixed(5);
+                } else {
+                  i.exit_enthalpy = '';
+                }
               } else {
                 let airHumidity = this.count();
                 sum =
                   1.005 * i.exit +
                   (airHumidity / 1000) * (2501 + 1.86 * i.exit);
-                console.log(sum);
-                i.exit_enthalpy = sum.toFixed(5);
+                if (this.isNaN(sum)) {
+                  i.exit_enthalpy = sum.toFixed(5);
+                } else {
+                  i.exit_enthalpy = '';
+                }
               }
               return sum;
             }
@@ -1443,11 +1615,17 @@
               this.form.entrance &&
               this.form.exit
             ) {
+              let entrances = this.entrances();
+              let enthalpy = this.enthalpy();
               let result =
-                (this.form.entrance_enthalpy - this.form.exit_enthalpy) /
+                (entrances - enthalpy) /
                 (1.009 * (this.form.entrance - this.form.exit));
-              console.log(result);
-              this.form.coefficient = result.toFixed(2);
+
+              if (this.isNaN(result)) {
+                this.form.coefficient = result.toFixed(2);
+              } else {
+                this.form.coefficient = '';
+              }
               return result;
             }
           },
@@ -1462,8 +1640,11 @@
               let entrance_enthalpy = this.entrances();
               let exit_enthalpy = this.enthalpy();
               let result = air_flow * (entrance_enthalpy - exit_enthalpy);
-              console.log(result);
-              this.form.air_total = result.toFixed(1);
+              if (this.isNaN(result)) {
+                this.form.air_total = result.toFixed(1);
+              } else {
+                this.form.air_total = '';
+              }
               this.heatRelease = Math.floor(result);
               return result;
             }
@@ -1472,7 +1653,6 @@
             if (this.form.averageCopy) {
               let averageCopy = this.form.averageCopy;
               let arr = this.count_gases(averageCopy);
-              console.log(arr);
               this.form.water_density = arr[4]; // 水的密度
               this.form.water_heat = arr[5]; // 水的比热
             } else {
@@ -1507,40 +1687,53 @@
           effluents() {
             let i = this.form;
             let a = Number(i.water_temp);
-            console.log(a);
             let result =
               a +
               (i.air_total * 3600) /
                 (i.water_flow * i.water_density * i.water_heat);
-            console.log(result);
-            i.effluent = result.toFixed(1);
+            if (this.isNaN(result)) {
+              i.effluent = result.toFixed(1);
+            } else {
+              i.effluent = '';
+            }
+
             return result;
           },
           differences() {
             let effluent = this.effluents();
             let result = effluent - this.form.water_temp;
-            console.log(result);
-            this.form.difference = result.toFixed(1);
+            if (this.isNaN(result)) {
+              this.form.difference = result.toFixed(1);
+            } else {
+              this.form.difference = '';
+            }
+
             return result;
           },
           averages() {
             let effluent = this.effluents();
             let result = (effluent + Number(this.form.water_temp)) / 2;
-            console.log(result);
-            this.form.average = result.toFixed(2);
+            if (this.isNaN(result)) {
+              this.form.average = result.toFixed(2);
+            } else {
+              this.form.average = '';
+            }
           },
           conductions(v) {
             let average = parseInt(this.form.average);
             let arr = this.count_gases(average);
             let result = arr[v];
             return result;
-            console.log(result);
           },
           hot_air_entrance() {
             let effluent = this.effluents();
             let result = this.form.entrance - effluent;
-            this.form.hot_air_entrance = result.toFixed(2);
-            console.log(result);
+            if (this.isNaN(result)) {
+              this.form.hot_air_entrance = result.toFixed(2);
+            } else {
+              this.form.hot_air_entrance = '';
+            }
+
             return result;
           },
           hot_air() {
@@ -1549,23 +1742,35 @@
           hot_air_exit() {
             if (this.form.exit && this.form.water_temp) {
               let result = this.form.exit - this.form.water_temp;
-              console.log(result);
-              this.form.hot_air_exit = result.toFixed(1); // 热空气出口端温差s
+              if (this.isNaN(result)) {
+                this.form.hot_air_exit = result.toFixed(1); // 热空气出口端温差s
+              } else {
+                this.form.hot_air_exit = '';
+              }
+
               return result;
             }
           },
           P_equal() {
             let difference = this.differences();
             let result = difference / (this.form.entrance - this.form.exit);
-            console.log(result);
-            this.form.p_equal = result.toFixed(2);
+            if (this.isNaN(result)) {
+              this.form.p_equal = result.toFixed(2);
+            } else {
+              this.form.p_equal = '';
+            }
           },
           R_equal() {
             let difference = this.differences();
             let result = (this.form.entrance - this.form.exit) / difference;
-            this.form.r_equal = result.toFixed(1);
+            if (this.isNaN(result)) {
+              this.form.r_equal = result.toFixed(1);
+            } else {
+              this.form.r_equal = '';
+            }
           },
           revises() {
+            // ∆tm
             let i = this.form;
             if (i.hot_air_entrance && i.hot_air_exit && i.revise) {
               hot_air_entrance = this.hot_air_entrance();
@@ -1574,14 +1779,17 @@
                 ((hot_air_entrance - hot_air_exit) /
                   Math.log(hot_air_entrance / hot_air_exit)) *
                 i.revise;
-              console.log(result);
-              i.tm_equal = result.toFixed(2); // ∆tm
+              if (this.isNaN(result)) {
+                i.tm_equal = result.toFixed(2);
+              } else {
+                i.tm_equal = '';
+              }
+
               return result;
             } else {
               i.tm_equal = '';
             }
           },
-
           margin_fun() {
             if (this.form.margin) {
               var v =
@@ -1589,13 +1797,19 @@
                   2 +
                   3.14159 * (16.5 + 2 * 0.12) * this.form.margin) /
                 (38.1 * this.form.margin);
-              console.log(v);
-              this.form.transfer = v.toFixed(1); // 每平米每排换热面积
+              if (this.isNaN(v)) {
+                this.form.transfer = v.toFixed(1); // 每平米每排换热面积
+              } else {
+                this.form.transfer = '';
+              }
               if (this.form.windward && this.form.depth) {
                 let windward = this.width_fun();
                 let result = v * windward * this.form.depth;
-                console.log(result);
-                this.form.product = result.toFixed(2); // 产品换热面积
+                if (this.isNaN(result)) {
+                  this.form.product = result.toFixed(2); // 产品换热面积
+                } else {
+                  this.form.product = '';
+                }
               }
               this.aisle(this.form.margin);
               this.diameter(this.form.margin);
@@ -1625,15 +1839,23 @@
           width_fun() {
             if (this.form.length && this.form.width) {
               let sum = (this.form.length * this.form.width) / 1000000;
-              console.log(sum);
-              this.form.windward = sum.toFixed(3); // 迎风面面积
+              if (this.isNaN(sum)) {
+                this.form.windward = sum.toFixed(3); // 迎风面面积
+              } else {
+                this.form.windward = '';
+              }
+
               return sum;
             }
           },
           aisle(y) {
             let result = ((38.1 - (16.5 + 2 * 0.12)) * (y - 0.12)) / (38.1 * y);
-            console.log(result);
-            this.form.aisle = result.toFixed(3); // 气侧有效通道截面系数
+            if (this.isNaN(result)) {
+              this.form.aisle = result.toFixed(3); // 气侧有效通道截面系数
+            } else {
+              this.form.aisle = '';
+            }
+
             return result;
           },
           diameter(a) {
@@ -1641,8 +1863,12 @@
               let result =
                 (4 * (38.1 - (16.5 + 2 * 0.12)) * (a - 0.12)) /
                 (2 * (38.1 - (16.5 + 2 * 0.12) + (a - 0.12)));
-              console.log(result);
-              this.form.diameter = result.toFixed(1); // 气侧有效通道当量直径
+              if (this.isNaN(result)) {
+                this.form.diameter = result.toFixed(1); // 气侧有效通道当量直径
+              } else {
+                this.form.diameter = '';
+              }
+
               return result;
             }
           },
@@ -1653,7 +1879,12 @@
                   2 +
                   3.14159 * (16.5 + 2 * 0.12) * b) /
                 (3.14159 * (x - 2 * z) * b);
-              this.form.rib = result.toFixed(1); // 肋化系数
+              if (this.isNaN(result)) {
+                this.form.rib = result.toFixed(1); // 肋化系数
+              } else {
+                this.form.rib = '';
+              }
+
               return result;
             } else {
               this.form.rib = '';
@@ -1663,8 +1894,12 @@
             if (this.form.width && this.form.depth) {
               let result =
                 (this.form.width / 38.1) * this.form.depth -
-                parseInt(this.form.depth / 2);
-              this.form.cooling = result; // 冷却管根数
+                Number(this.form.depth / 2);
+              if (this.isNaN(result)) {
+                this.form.cooling = result; // 冷却管根数
+              } else {
+                this.form.cooling = '';
+              }
             } else {
               this.form.cooling = '';
               this.form.area = '';
@@ -1673,7 +1908,11 @@
           valid() {
             if (this.form.structure_six) {
               let result = 16.5 - 2 * this.form.structure_six + 0.09;
-              this.form.valid = result.toFixed(2); // 水侧有效通道当量直径
+              if (this.isNaN(result)) {
+                this.form.valid = result.toFixed(2); // 水侧有效通道当量直径
+              } else {
+                this.form.valid = '';
+              }
             } else {
               this.form.valid = '';
               this.form.area = '';
@@ -1681,11 +1920,7 @@
           },
           area() {
             if (this.form.cooling && this.form.Tube_side && this.form.valid) {
-              let result =
-                (((this.form.cooling / this.form.Tube_side) * 3.14159) / 4) *
-                Math.pow(this.form.valid / 1000, 2);
-              this.form.area = result.toFixed(4); // 有效通道面积
-
+              this.areas();
               this.velocity();
               this.Reynolds();
               this.factor();
@@ -1716,10 +1951,30 @@
               this.form.gases_control = '';
             }
           },
+          areas() {
+            if (this.form.cooling && this.form.Tube_side && this.form.valid) {
+              let result =
+                (((this.form.cooling / this.form.Tube_side) * 3.14159) / 4) *
+                Math.pow(this.form.valid / 1000, 2);
+              if (this.isNaN(result)) {
+                this.form.area = result.toFixed(4); // 有效通道面积
+              } else {
+                this.form.area = '';
+              }
+              return result;
+            } else {
+              this.form.area = '';
+            }
+          },
           velocity() {
             if (this.form.water_flow) {
-              let result = this.form.water_flow / 3600 / this.form.area;
-              this.form.velocity = result.toFixed(2); // 冷却水线性流速
+              let area = this.areas();
+              let result = this.form.water_flow / 3600 / area;
+              if (this.isNaN(result)) {
+                this.form.velocity = result.toFixed(2); // 冷却水线性流速
+              } else {
+                this.form.velocity = '';
+              }
               return result;
             } else {
               this.form.velocity = '';
@@ -1739,7 +1994,12 @@
                   (this.form.structure_five - 2 * this.form.structure_six) *
                   1000) /
                 this.form.water_power;
-              this.form.Reynolds = result.toFixed(0); // 管侧Reynolds
+              if (this.isNaN(result)) {
+                this.form.Reynolds = result.toFixed(0); // 管侧Reynolds
+              } else {
+                this.form.Reynolds = '';
+              }
+
               return result;
             }
           },
@@ -1758,7 +2018,12 @@
                 0.023 *
                 Math.pow(i.Reynolds, 0.8) *
                 Math.pow(i.water_ludwig, 0.4);
-              this.form.factor = result.toFixed(0); // 管侧换热系数
+              if (this.isNaN(result)) {
+                this.form.factor = result.toFixed(0); // 管侧换热系数
+              } else {
+                this.form.factor = '';
+              }
+
               return result;
             }
           },
@@ -1767,7 +2032,12 @@
               let windward = this.width_fun();
               let aisle = this.aisle(this.form.margin);
               let result = windward * aisle;
-              this.form.areaCopy = result.toFixed(4); // 气侧-有效通道面积
+              if (this.isNaN(result)) {
+                this.form.areaCopy = result.toFixed(4); // 气侧-有效通道面积
+              } else {
+                this.form.areaCopy = '';
+              }
+
               return result;
             }
           },
@@ -1776,14 +2046,22 @@
               let quality = this.quality();
               let areaCopy = this.areaCopy();
               let result = quality / areaCopy;
-              this.form.velocityCopy = result.toFixed(2); // 空气质量流速
+              if (this.isNaN(result)) {
+                this.form.velocityCopy = result.toFixed(2); // 空气质量流速
+              } else {
+                this.form.velocityCopy = '';
+              }
               return result;
             }
           },
           wire() {
             if (this.form.velocityCopy && this.form.air_density) {
               let result = this.form.velocityCopy / this.form.air_density;
-              this.form.wire = result.toFixed(2); // 气侧线性流速
+              if (this.isNaN(result)) {
+                this.form.wire = result.toFixed(2); // 气侧线性流速
+              } else {
+                this.form.wire = '';
+              }
             }
           },
           gas_Reynolds() {
@@ -1792,37 +2070,41 @@
               this.form.diameter &&
               this.form.air_power
             ) {
+              let velocityCopy = this.velocityCopy();
+              let diameter = this.diameter(this.form.margin);
               let result =
-                ((this.form.velocityCopy * this.form.diameter) /
-                  1000 /
-                  this.form.air_power) *
+                ((velocityCopy * diameter) / 1000 / this.form.air_power) *
                 1000000;
-              this.form.gas_Reynolds = result.toFixed(0); // 气侧Reynolds
+              if (this.isNaN(result)) {
+                this.form.gas_Reynolds = result.toFixed(0); // 气侧Reynolds
+              } else {
+                this.form.gas_Reynolds = '';
+              }
+
               return result;
             }
           },
           gas_heat() {
+            // 气侧换热系数
             if (
               this.form.air_conduction &&
               this.form.diameter &&
               this.form.gas_Reynolds
             ) {
               let diameter = this.diameter(this.form.margin);
+              let Reynolds = this.gas_Reynolds();
               let result =
                 ((this.form.air_conduction * 1000) / diameter) *
                 0.2045 *
-                Math.pow(this.form.gas_Reynolds, 0.549);
-              console.log(
-                this.form.air_conduction,
-                diameter,
-                this.form.gas_Reynolds,
-                '参数'
-              );
-              this.form.gas_heat = result.toFixed(1);
+                Math.pow(Reynolds, 0.549);
+              if (this.isNaN(result)) {
+                this.form.gas_heat = result.toFixed(1);
+              } else {
+                this.form.gas_heat = '';
+              }
               return result;
             }
           },
-
           mouth() {
             if (this.form.mouth_diameter) {
               this.mouthVelocity();
@@ -1841,7 +2123,12 @@
                 this.form.water_flow /
                 3600 /
                 ((3.14159 / 4) * Math.pow(this.form.mouth_diameter / 1000, 2));
-              this.form.mouth_velocity = result.toFixed(2);
+              if (this.isNaN(result)) {
+                this.form.mouth_velocity = result.toFixed(2);
+              } else {
+                this.form.mouth_velocity = '';
+              }
+
               return result;
             }
           },
@@ -1850,7 +2137,12 @@
             if (this.form.Reynolds) {
               let Reynolds = this.Reynolds();
               let result = 0.0056 + 0.5 / Math.pow(Reynolds, 0.32);
-              this.form.mouth_friction = result.toFixed(2);
+              if (this.isNaN(result)) {
+                this.form.mouth_friction = result.toFixed(2);
+              } else {
+                this.form.mouth_friction = '';
+              }
+
               return result;
             }
           },
@@ -1879,7 +2171,12 @@
                   (i.structure_five - 2 * i.structure_six)) /
                   1000) /
                 1000000;
-              i.mouth_nowel = result.toFixed(3);
+              if (this.isNaN(result)) {
+                i.mouth_nowel = result.toFixed(3);
+              } else {
+                i.mouth_nowel = '';
+              }
+
               return result;
             } else {
               i.mouth_nowel = '';
@@ -1899,7 +2196,12 @@
                   this.form.Tube_side) /
                 (2 * this.form.water_density) /
                 1000000;
-              this.form.bend_nowel = result.toFixed(3);
+              if (this.isNaN(result)) {
+                this.form.bend_nowel = result.toFixed(3);
+              } else {
+                this.form.bend_nowel = '';
+              }
+
               return result;
             }
           },
@@ -1913,7 +2215,12 @@
                   this.form.water_density) *
                   1.5) /
                 1000000;
-              this.form.pipe_nowel = result.toFixed(4);
+              if (this.isNaN(result)) {
+                this.form.pipe_nowel = result.toFixed(4);
+              } else {
+                this.form.pipe_nowel = '';
+              }
+
               return result;
             } else {
               this.form.pipe_nowel = '';
@@ -1925,7 +2232,12 @@
               const mouth_nowel = this.mouthNowel();
               const bend_nowel = this.bendNowel();
               let result = mouth_nowel + bend_nowel;
-              this.form.bends_nowel = result.toFixed(4);
+              if (this.isNaN(result)) {
+                this.form.bends_nowel = result.toFixed(4);
+              } else {
+                this.form.bends_nowel = '';
+              }
+
               return result;
             }
           },
@@ -1935,7 +2247,12 @@
               const pipe_nowel = this.pipeNowel();
               const bends_nowel = this.bendsNowel();
               let result = pipe_nowel + bends_nowel;
-              this.form.pipes_nowel = result.toFixed(4);
+              if (this.isNaN(result)) {
+                this.form.pipes_nowel = result.toFixed(4);
+              } else {
+                this.form.pipes_nowel = '';
+              }
+
               this.waterPressureLossOfMedium = (result * 1000).toFixed(2);
             }
           },
@@ -1950,7 +2267,6 @@
               i.factor &&
               i.rib
             ) {
-              console.log('进来了?');
               const heat = this.gas_heat();
               const coefficient = this.coefficient();
               const factor = this.factor();
@@ -1966,7 +2282,12 @@
                     i.structure_six / 1000 / i.structure_four + 1 / factor
                   ) *
                     rib);
-              i.have_dirt = result.toFixed(1); // 无污垢总传热系数
+
+              if (this.isNaN(result)) {
+                i.have_dirt = result.toFixed(1); // 无污垢总传热系数
+              } else {
+                i.have_dirt = '';
+              }
             }
           },
           none_dirt() {
@@ -2000,7 +2321,11 @@
                   ) *
                     rib +
                   Number(i.dirt));
-              i.none_dirt = result.toFixed(1); // 有污垢总传热系数
+              if (this.isNaN(result)) {
+                i.none_dirt = result.toFixed(1); // 有污垢总传热系数
+              } else {
+                i.none_dirt = '';
+              }
 
               return result;
             }
@@ -2015,7 +2340,12 @@
               const tm_equal = this.revises();
               const none_dirt = this.none_dirt();
               let result = (air_total * 1000) / tm_equal / none_dirt;
-              this.form.compute = result.toFixed(1); // 计算换热面积
+              if (this.isNaN(result)) {
+                this.form.compute = result.toFixed(1); // 计算换热面积
+              } else {
+                this.form.compute = '';
+              }
+
               return result;
             }
           },
@@ -2023,10 +2353,13 @@
             if (this.form.product && this.form.compute) {
               const compute = this.Compute();
               let result = ((this.form.product - compute) / compute) * 100;
-              this.form.design = result.toFixed(2); // 面积设计裕度
+              if (this.isNaN(result)) {
+                this.form.design = result.toFixed(2); // 面积设计裕度
+              } else {
+                this.form.design = '';
+              }
             }
           },
-
           qicheng_fun() {
             if (this.form.gases_diameter) {
               this.qicheng();
@@ -2046,7 +2379,12 @@
                 quality /
                 entrance /
                 ((3.14159 / 4) * Math.pow(i.gases_diameter / 1000, 2));
-              i.gases_velocity = result.toFixed(1);
+              if (this.isNaN(result)) {
+                i.gases_velocity = result.toFixed(1);
+              } else {
+                i.gases_velocity = '';
+              }
+
               return result;
             }
           },
@@ -2058,11 +2396,15 @@
               let result =
                 ((Math.pow(velocity * entrance, 2) / 2 / entrance) * 0.75) /
                 1000;
-              this.form.gases_nowel = result.toFixed(4);
+              if (this.isNaN(result)) {
+                this.form.gases_nowel = result.toFixed(4);
+              } else {
+                this.form.gases_nowel = '';
+              }
+
               return result;
             }
           },
-
           diameterc_fun() {
             if (this.form.gases_diameterc) {
               this.diameterc();
@@ -2084,7 +2426,12 @@
                 quality /
                 air_exit /
                 ((3.14159 / 4) * Math.pow(i.gases_diameterc / 1000, 2));
-              this.form.gases_velocityc = result.toFixed(1);
+              if (this.isNaN(result)) {
+                this.form.gases_velocityc = result.toFixed(1);
+              } else {
+                this.form.gases_velocityc = '';
+              }
+
               return result;
             }
           },
@@ -2095,7 +2442,12 @@
               const air_exit = this.exit();
               let result =
                 ((Math.pow(nowelc * air_exit, 2) / 2 / air_exit) * 0.75) / 1000;
-              this.form.gases_nowelc = result.toFixed(4);
+              if (this.isNaN(result)) {
+                this.form.gases_nowelc = result.toFixed(4);
+              } else {
+                this.form.gases_nowelc = '';
+              }
+
               return result;
             }
           },
@@ -2112,7 +2464,12 @@
                 (((0.0024 * Math.pow(velocity, 2.0139) * this.form.depth) / 8) *
                   1.13) /
                 density;
-              this.form.gases_control = result.toFixed(4);
+              if (this.isNaN(result)) {
+                this.form.gases_control = result.toFixed(4);
+              } else {
+                this.form.gases_control = '';
+              }
+
               this.airPressureLossOfMedium = result.toFixed(2);
               return result;
             }
@@ -2128,11 +2485,15 @@
               const nowelc = this.gases_nowelc();
               const control = this.gases_control();
               let result = nowel + nowelc + control;
-              this.form.gases_controlc = result.toFixed(4);
+              if (this.isNaN(result)) {
+                this.form.gases_controlc = result.toFixed(4);
+              } else {
+                this.form.gases_controlc = '';
+              }
+
               return result;
             }
           },
-
           twine_fun() {
             if (this.form.twine_K1) {
               this.twine_handle();
@@ -2149,7 +2510,12 @@
               let result =
                 this.form.twine_K1 *
                 Math.pow((this.form.water_density - exit) / exit, 0.5);
-              this.form.twine_handle = result.toFixed(2);
+              if (this.isNaN(result)) {
+                this.form.twine_handle = result.toFixed(2);
+              } else {
+                this.form.twine_handle = '';
+              }
+
               return result;
             }
           },
@@ -2173,7 +2539,12 @@
                   (1 - i.twine_lacuna)) /
                 (i.twine_diameter / 1000) /
                 1000;
-              this.form.twine_nowel = result.toFixed(2);
+              if (this.isNaN(result)) {
+                this.form.twine_nowel = result.toFixed(2);
+              } else {
+                this.form.twine_nowel = '';
+              }
+
               return result;
             }
           },
@@ -2201,7 +2572,12 @@
             if (this.form.length) {
               let result =
                 ((this.form.length / 2) * this.form.twine_distance) / 1000000;
-              this.form.twine_area = result.toFixed(5);
+              if (this.isNaN(result)) {
+                this.form.twine_area = result.toFixed(5);
+              } else {
+                this.form.twine_area = '';
+              }
+
               return result;
             }
           },
@@ -2213,7 +2589,12 @@
               const quality = this.quality();
               const area = this.twine_area();
               let result = quality / (area * entrance);
-              this.form.twine_flow = result.toFixed(6);
+              if (this.isNaN(result)) {
+                this.form.twine_flow = result.toFixed(6);
+              } else {
+                this.form.twine_flow = '';
+              }
+
               return result;
             }
           },
@@ -2223,7 +2604,12 @@
               const flow = this.twine_flow();
               const entrance = this.entrance();
               let result = (entrance * Math.pow(flow, 2)) / 2 / 1000;
-              this.form.twine_stress = result.toFixed(7);
+              if (this.isNaN(result)) {
+                this.form.twine_stress = result.toFixed(7);
+              } else {
+                this.form.twine_stress = '';
+              }
+
               return result;
             }
           },
@@ -2232,7 +2618,12 @@
             if (this.form.length) {
               let result =
                 ((this.form.length / 2) * this.form.twine_distance) / 1000000;
-              this.form.twine_export = result.toFixed(5);
+              if (this.isNaN(result)) {
+                this.form.twine_export = result.toFixed(5);
+              } else {
+                this.form.twine_export = '';
+              }
+
               return result;
             }
           },
@@ -2244,7 +2635,13 @@
               const exit = this.exit();
               const twine = this.twine_export();
               let result = quality / (twine * exit);
-              this.form.twine_rate = result.toFixed(6);
+              console.log(quality, twine, exit);
+              if (this.isNaN(result)) {
+                this.form.twine_rate = result.toFixed(6);
+              } else {
+                this.form.twine_rate = '';
+              }
+
               return result;
             }
           },
@@ -2253,7 +2650,12 @@
               const exit = this.exit();
               const rate = this.twine_rate();
               let result = (exit * Math.pow(rate, 2)) / 2 / 1000;
-              this.form.twine_pressure = result.toFixed(7);
+              if (this.isNaN(result)) {
+                this.form.twine_pressure = result.toFixed(7);
+              } else {
+                this.form.twine_pressure = '';
+              }
+
               return result;
             }
           },
@@ -2270,7 +2672,11 @@
               const stress = this.twine_stress();
               const pressure = this.twine_pressure();
               let result = controlc + nowel + stress + pressure;
-              this.form.twine_total = result.toFixed(2);
+              if (this.isNaN(result)) {
+                this.form.twine_total = result.toFixed(2);
+              } else {
+                this.form.twine_total = '';
+              }
             }
           },
           //切换页面

@@ -35,6 +35,7 @@
   width: 100%;
 }
 .main .grid-content .el-select .el-input__icon {
+  height: 35px;
   line-height: 35px;
 }
 .main .grid-content .el-input {
@@ -44,10 +45,6 @@
   height: 35px;
   line-height: 35px;
 }
-.main .grid-content .el-input.is-disabled .el-input__inner {
-  color: #606266;
-  background-color: #fff;
-}
 .button {
   position: absolute;
   top: 50px;
@@ -56,6 +53,10 @@
 #home {
   padding: 30px;
 }
+#home .langsen {
+  text-align: left;
+  line-height: 2;
+}
 #home p {
   border-left: 1px solid #000;
   border-bottom: 1px solid #000;
@@ -63,6 +64,22 @@
   height: 40px;
   line-height: 40px;
   text-align: center;
+}
+#home .head {
+  border: none;
+}
+#home .Calculation {
+  border: 0;
+}
+#home .fl {
+  width: 90%;
+  margin: 0 auto;
+}
+#home .fr {
+  float: right;
+}
+#home .border {
+  border-top: 1px solid #333;
 }
 #home .rightBorder p {
   border-right: 1px solid #000;
