@@ -31,6 +31,16 @@
 .main .grid-content .none {
   visibility: hidden;
 }
+.main .grid-content .el-form-item {
+  margin: 0;
+}
+.main .grid-content .el-form-item .el-form-item__content {
+  line-height: 0;
+}
+.main .grid-content .el-form-item .el-form-item__content .el-form-item__error {
+  top: 60%;
+  font-size: 14px;
+}
 .main .grid-content .el-select {
   width: 100%;
 }
@@ -39,7 +49,7 @@
   line-height: 35px;
 }
 .main .grid-content .el-input {
-  padding-bottom: 7px;
+  padding-bottom: 20px;
 }
 .main .grid-content .el-input__inner {
   height: 35px;
